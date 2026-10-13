@@ -1,0 +1,261 @@
+/* RESET BÁSICO DA INTERNET */
+* {
+    margin: 0px; 
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #202936;
+    line-height: 1.6;
+}
+
+/*HEADER E MENU */
+#topo {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e6eb;
+    padding: 18px 8%;
+    overflow: auto; /* para limpar os floats */
+}
+
+.logo { float: left; }
+.logo span { font-size: 30px; float: left; margin-right: 10px; }
+.logo div { float: left; }
+.logo h1 { font-size: 20px; margin: 0; }
+.logo p { color: #687386; font-size: 13px; margin: 0; }
+
+.menu { float: right; margin-top: 10px; }
+.menu a { text-decoration: none; color: #4d5868; font-size: 14px; margin-left: 20px; }
+.menu a:hover { color: #2457d6; text-decoration: underline; }
+
+/*SECAO INICIO*/
+.inicio {
+    min-height: 500px;
+    padding: 80px 10%;
+    background-color: #ffffff;
+    clear: both;
+}
+
+.inicio-texto {
+    width: 60%;
+    float: left;
+}
+
+.tag {
+    color: #2457d6;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.inicio h2 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.inicio h2 strong { color: #2457d6; }
+
+.inicio-texto p {
+    color: #5e6877;
+    margin-bottom: 30px;
+    width: 90%;
+}
+
+.botao {
+    display: inline-block;
+    background-color: #2457d6;
+    color: white;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+.botao:hover { background-color: #1945b5; }
+
+.inicio-card {
+    width: 35%;
+    float: right;
+    background-color: #f0f4ff;
+    border: 1px solid #dce5ff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.inicio-card span { font-size: 35px; }
+.inicio-card h3 { margin-top: 10px; margin-bottom: 10px; }
+.inicio-card p { color: #5e6877; font-size: 14px; }
+
+/* SEÇOES GERAIS */
+.secao {
+    padding: 70px 10%;
+    clear: both;
+}
+
+.titulo {
+    margin-bottom: 30px;
+    overflow: auto;
+}
+
+.titulo > span {
+    color: #2457d6;
+    font-weight: bold;
+    float: left;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.titulo div { float: left; }
+.titulo h2 { font-size: 27px; }
+.titulo p { color: #707b8b; font-size: 14px; }
+
+/* FORMULARIOS E GRIDS */
+.consulta, .registro {
+    display: flex;
+    gap: 25px;
+}
+
+.formulario, .resultado, .lista-riscos {
+    background-color: white;
+    border: 1px solid #e0e4e9;
+    border-radius: 8px;
+    padding: 25px;
+    width: 50%;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+select, textarea {
+    width: 100%;
+    border: 1px solid #cfd5dd;
+    border-radius: 5px;
+    padding: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    background-color: #2457d6;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+button:hover { background-color: #1945b5; }
+
+.resultado { background-color: #f9fafc; }
+.resultado > span { font-size: 30px; }
+.resultado h3 { margin-top: 10px; margin-bottom: 5px; }
+.resultado p { color: #657080; }
+
+/*  QUIZ  */
+.quiz {
+    background-color: white;
+    border: 1px solid #e0e4e9;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 800px;
+}
+
+.numero { color: #2457d6; font-size: 12px; font-weight: bold; }
+.quiz h3 { margin-top: 10px; margin-bottom: 25px; font-size: 20px; }
+
+.opcoes button {
+    background-color: #f1f3f6;
+    color: #303947;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.opcoes button:hover { background-color: #e5e9ef; }
+
+#resposta-quiz {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* PAINEL */
+.indicadores {
+    overflow: auto;
+}
+
+.indicador {
+    background-color: white;
+    border: 1px solid #e0e4e9;
+    border-radius: 8px;
+    padding: 20px;
+    width: 23%;
+    float: left;
+    margin-right: 2%;
+}
+
+.indicador:last-child { margin-right: 0px; }
+.indicador > span { font-size: 25px; float: left; margin-right: 15px; }
+.indicador small { display: block; color: #707b8b; font-size: 12px; }
+.indicador strong { display: block; font-size: 21px; }
+
+/* LISTA */
+.lista-riscos h3 { margin-bottom: 15px; }
+#lista { list-style: none; }
+#lista li { border-bottom: 1px solid #e5e8ec; padding: 12px 0; }
+#lista li:last-child { border-bottom: none; }
+
+.risco-tipo { font-weight: bold; color: #2457d6; }
+.risco-descricao { color: #667181; font-size: 14px; }
+.vazio { color: #8a93a0; }
+
+/* RODAPE */
+#rodape {
+    background-color: #202936;
+    color: white;
+    padding: 30px 10%;
+    text-align: center;
+    clear: both;
+}
+
+#rodape span {
+    color: #aab2bd;
+    font-size: 13px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 800px) {
+    .logo, .menu, .inicio-texto, .inicio-card, .formulario, .resultado, .lista-riscos, .indicador {
+        width: 100% !important;
+        float: none !important;
+        margin-right: 0 !important;
+        margin-bottom: 15px;
+    }
+
+    .consulta, .registro {
+        flex-direction: column;
+    }
+
+    .menu { text-align: center; }
+    .menu a { display: inline-block; margin: 5px 10px; }
+    .inicio h2 { font-size: 36px; }
+}
