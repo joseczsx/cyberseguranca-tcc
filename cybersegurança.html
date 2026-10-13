@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observatorio de Seguranca Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CABECALHO DO SITE -->
+    <div id="topo">
+        <div class="logo">
+            <span>🔐</span>
+            <div>
+                <h1>Observatório</h1>
+                <p>Segurança Digital</p>
+            </div>
+        </div>
+
+        <!MENU>
+        <div class="menu">
+            <a href="#inicio">Início</a>
+            <a href="#consultar">Consultar</a>
+            <a href="#teste">Teste</a>
+            <a href="#riscos">Registrar risco</a>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <!-- PARTE DO INICIO -->
+        <div class="inicio" id="inicio">
+            <div class="inicio-texto">
+                <span class="tag">EDUCAÇÃO DIGITAL</span>
+                <h2>Antes de clicar,<br><strong>pense duas vezes.</strong></h2>
+                <p>Aprenda a reconhecer golpes, links suspeitos, phishing e outras ameaças comuns na internet.</p>
+                <a href="#consultar" class="botao">Consultar uma situação</a>
+            </div>
+
+            <div class="inicio-card">
+                <span>🚨</span>
+                <h3>Fique atento</h3>
+                <p>Nem tudo que chega pela internet é confiável. Verifique antes de clicar ou compartilhar.</p>
+            </div>
+        </div>
+
+        <!-- SECAO 1: CONSULTAR SITUACAO -->
+        <div class="secao" id="consultar">
+            <div class="titulo">
+                <span>01</span>
+                <div>
+                    <h2>Consultar uma situação</h2>
+                    <p>Escolha uma situação para descobrir como agir.</p>
+                </div>
+            </div>
+
+            <div class="consulta">
+                <div class="formulario">
+                    <label>Qual situação você encontrou?</label><br>
+                    <select id="situacao">
+                        <option value="">Selecione uma opção</option>
+                        <option value="link">Link recebido por mensagem</option>
+                        <option value="email">E-mail desconhecido</option>
+                        <option value="senha">Pedido de senha</option>
+                        <option value="promocao">Promoção muito vantajosa</option>
+                        <option value="perfil">Perfil desconhecido</option>
+                        <option value="arquivo">Arquivo recebido</option>
+                    </select>
+                    <br><br>
+                    <button onclick="consultarSituacao()">Ver orientação</button>
+                </div>
+
+                <div class="resultado" id="resultado">
+                    <span>💡</span>
+                    <h3>Orientação</h3>
+                    <p>Selecione uma situação ao lado para receber uma dica.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TESTE RAPIDO -->
+        <div class="secao" id="teste">
+            <div class="titulo">
+                <span>02</span>
+                <div>
+                    <h2>Teste rápido</h2>
+                    <p>Veja se você sabe identificar um risco digital.</p>
+                </div>
+            </div>
+
+            <div class="quiz">
+                <p class="numero">PERGUNTA 1</p>
+                <h3>Você recebeu um link dizendo que ganhou um prêmio. O que fazer?</h3>
+
+                <div class="opcoes">
+                    <button onclick="responderQuiz(false)">Clicar imediatamente</button>
+                    <button onclick="responderQuiz(false)">Compartilhar com amigos</button>
+                    <button onclick="responderQuiz(true)">Verificar a origem do link</button>
+                    <button onclick="responderQuiz(false)">Informar sua senha</button>
+                </div>
+
+                <div id="resposta-quiz"></div>
+            </div>
+        </div>
+
+        <!-- PAINEL -->
+        <div class="secao" id="painel">
+            <div class="titulo">
+                <span>03</span>
+                <div>
+                    <h2>Painel de segurança</h2>
+                    <p>Acompanhe sua participação no observatório.</p>
+                </div>
+            </div>
+
+            <div class="indicadores">
+                <div class="indicador">
+                    <span>🟡</span>
+                    <div>
+                        <small>Nível de atenção</small>
+                        <strong>Médio</strong>
+                    </div>
+                </div>
+
+                <div class="indicador">
+                    <span>💡</span>
+                    <div>
+                        <small>Dicas consultadas</small>
+                        <strong id="dicas">0</strong>
+                    </div>
+                </div>
+
+                <div class="indicador">
+                    <span>🧠</span>
+                    <div>
+                        <small>Perguntas respondidas</small>
+                        <strong id="perguntas">0</strong>
+                    </div>
+                </div>
+
+                <div class="indicador">
+                    <span>✅</span>
+                    <div>
+                        <small>Acertos</small>
+                        <strong id="acertos">0</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGISTRAR RISCO -->
+        <div class="secao" id="riscos">
+            <div class="titulo">
+                <span>04</span>
+                <div>
+                    <h2>Registrar um risco</h2>
+                    <p>Encontrou algo suspeito? Registre a situação.</p>
+                </div>
+            </div>
+
+            <div class="registro">
+                <div class="formulario">
+                    <label>Tipo de risco</label>
+                    <select id="tipoRisco">
+                        <option value="">Selecione</option>
+                        <option>Phishing</option>
+                        <option>Fake news</option>
+                        <option>Golpe</option>
+                        <option>Perfil falso</option>
+                        <option>Link suspeito</option>
+                        <option>Cyberbullying</option>
+                        <option>Roubo de conta</option>
+                    </select>
+
+                    <br>
+                    <label>O que aconteceu?</label>
+                    <textarea id="descricao" placeholder="Descreva brevemente a situação..."></textarea>
+
+                    <br>
+                    <button onclick="registrarRisco()">Registrar risco</button>
+                </div>
+
+                <div class="lista-riscos">
+                    <h3>Riscos registrados</h3>
+                    <ul id="lista">
+                        <li class="vazio">Nenhum risco registrado ainda.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RODAPE -->
+    <div id="rodape">
+        <p>Observatório de Segurança Digital</p>
+        <span>Projeto educativo sobre segurança na internet</span>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
