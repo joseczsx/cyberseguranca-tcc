@@ -1,651 +1,124 @@
+.inicio-card h2 { font-size: 20px; margin: 8px 0; }
+.inicio-card p { color: #5e6877; font-size: 14px; }
 
-/* =================================
-   RESET E CONFIGURAÇÕES GERAIS
-================================= */
+/* SEÇÕES E TÍTULOS */
+.secao { padding: 55px 10%; }
+.titulo { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+.titulo > span { color: #2457d6; font-size: 18px; font-weight: 700; }
+.titulo h2 { font-size: 26px; line-height: 1.25; }
+.titulo p { color: #707b8b; font-size: 14px; }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* CARTÕES E FORMULÁRIOS */
+.duas-colunas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.cartao, .indicador {
+  background: #fff; border: 1px solid #e0e4e9; border-radius: 10px;
+  padding: 22px; min-width: 0;
 }
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 20px;
+.formulario label { display: block; font-size: 14px; font-weight: 700; margin: 0 0 6px; }
+select, textarea {
+  display: block; width: 100%; min-height: 46px; margin: 0 0 15px;
+  border: 1px solid #cfd5dd; border-radius: 7px; padding: 11px 12px;
+  background: #fff; color: #202936; font-size: 16px;
 }
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
-    color: #202936;
-    line-height: 1.6;
-    overflow-x: hidden;
+textarea { min-height: 110px; resize: vertical; }
+select:focus, textarea:focus, button:focus-visible, a:focus-visible {
+  outline: 3px solid #9bb8ff; outline-offset: 2px;
 }
-
-button, select, textarea {
-    font: inherit;
-}
-
-/* =================================
-   CABEÇALHO
-================================= */
-
-#topo {
-    background: #ffffff;
-    border-bottom: 1px solid #e2e6eb;
-    padding: 18px 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo span {
-    font-size: 30px;
-}
-
-.logo h1 {
-    font-size: 20px;
-}
-
-.logo p {
-    color: #687386;
-    font-size: 13px;
-}
-
-.menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #4d5868;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.menu a:hover {
-    color: #2457d6;
-}
-
-/* =================================
-   INÍCIO
-================================= */
-
-.inicio {
-    min-height: 420px;
-    padding: 70px 10%;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-.inicio-texto {
-    width: 60%;
-}
-
-.tag {
-    color: #2457d6;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.inicio h2 {
-    font-size: 46px;
-    line-height: 1.15;
-    margin: 15px 0;
-}
-
-.inicio h2 strong {
-    color: #2457d6;
-}
-
-.inicio-texto p {
-    color: #5e6877;
-    margin-bottom: 25px;
-    max-width: 500px;
-}
-
-.botao {
-    display: inline-block;
-    background-color: #2457d6;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.botao:hover {
-    background-color: #1945b5;
-}
-
-.inicio-card {
-    width: 35%;
-    background-color: #f0f4ff;
-    border: 1px solid #dce5ff;
-    padding: 28px;
-    border-radius: 10px;
-}
-
-.inicio-card span {
-    font-size: 35px;
-}
-
-.inicio-card h3 {
-    margin: 10px 0;
-}
-
-.inicio-card p {
-    color: #5e6877;
-    font-size: 14px;
-}
-
-/* =================================
-   SEÇÕES
-================================= */
-
-.secao {
-    padding: 60px 10%;
-}
-
-.titulo {
-    margin-bottom: 25px;
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.titulo > span {
-    color: #2457d6;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.titulo h2 {
-    font-size: 26px;
-}
-
-.titulo p {
-    color: #707b8b;
-    font-size: 14px;
-}
-
-/* =================================
-   FORMULÁRIOS
-================================= */
-
-.consulta,
-.registro {
-    display: flex;
-    gap: 20px;
-    align-items: stretch;
-}
-
-.formulario,
-.resultado,
-.lista-riscos {
-    background-color: white;
-    border: 1px solid #e0e4e9;
-    border-radius: 9px;
-    padding: 23px;
-    width: 50%;
-    min-width: 0;
-}
-
-label {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-select,
-textarea {
-    width: 100%;
-    border: 1px solid #cfd5dd;
-    border-radius: 6px;
-    padding: 12px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    background-color: white;
-    margin-bottom: 15px;
-}
-
-select {
-    cursor: pointer;
-}
-
-textarea {
-    height: 110px;
-    resize: vertical;
-}
-
-select:focus,
-textarea:focus {
-    outline: 2px solid #2457d6;
-    outline-offset: 2px;
-}
-
 button {
-    border: none;
-    border-radius: 6px;
-    background-color: #2457d6;
-    color: white;
-    padding: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    width: 100%;
-    transition: 0.2s;
+  width: 100%; min-height: 46px; border: 0; border-radius: 7px;
+  padding: 11px 14px; background: #2457d6; color: #fff;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: background .2s, transform .1s;
 }
+button:hover:not(:disabled) { background: #1945b5; }
+button:active:not(:disabled) { transform: scale(.99); }
+button:disabled { opacity: .55; cursor: not-allowed; }
+.resultado { background: #f9fafc; }
+.resultado > span { font-size: 30px; }
+.resultado h3 { margin: 7px 0; }
+.resultado p { color: #657080; overflow-wrap: anywhere; }
 
-button:hover:not(:disabled) {
-    background-color: #1945b5;
-}
-
-button:active:not(:disabled) {
-    transform: scale(0.98);
-}
-
-button:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-/* RESULTADO DA CONSULTA */
-
-.resultado {
-    background-color: #f9fafc;
-}
-
-.resultado > span {
-    font-size: 30px;
-}
-
-.resultado h3 {
-    margin: 8px 0;
-}
-
-.resultado p {
-    color: #657080;
-    overflow-wrap: anywhere;
-}
-
-/* =================================
-   QUIZ
-================================= */
-
-.quiz {
-    background-color: white;
-    border: 1px solid #e0e4e9;
-    border-radius: 10px;
-    padding: 23px;
-    max-width: 700px;
-    margin: auto;
-}
-
-.quiz-info {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    color: #2457d6;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.barra-progresso {
-    width: 100%;
-    height: 8px;
-    background-color: #e5eaf2;
-    border-radius: 20px;
-    margin: 15px 0 20px;
-    overflow: hidden;
-}
-
-#progresso {
-    width: 0%;
-    height: 100%;
-    background-color: #2457d6;
-    border-radius: 20px;
-    transition: width 0.3s;
-}
-
-.quiz h3 {
-    font-size: 18px;
-    margin-bottom: 18px;
-}
-
-.opcoes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
+/* QUIZ */
+.quiz { max-width: 720px; margin: 0 auto; }
+.quiz-info { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: #2457d6; font-size: 14px; font-weight: 700; }
+.barra-progresso { height: 9px; width: 100%; margin: 15px 0 20px; border-radius: 20px; background: #e5eaf2; overflow: hidden; }
+#progresso { width: 0; height: 100%; background: #2457d6; border-radius: inherit; transition: width .25s; }
+.quiz h3 { font-size: 19px; margin-bottom: 16px; }
+.opcoes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .opcoes button {
-    background-color: #f1f3f6;
-    color: #303947;
-    text-align: left;
-    border: 2px solid transparent;
-    min-height: 48px;
+  min-height: 50px; background: #f1f3f6; color: #303947; text-align: left;
+  border: 2px solid transparent; overflow-wrap: anywhere;
 }
+.opcoes button:hover:not(:disabled) { background: #e5edff; border-color: #2457d6; }
+.opcoes button.correta { background: #d9f7e5; border-color: #239b56; color: #176b39; }
+.opcoes button.incorreta { background: #ffe2e2; border-color: #d64545; color: #a32222; }
+#resposta-quiz { min-height: 24px; margin: 14px 0; font-size: 14px; font-weight: 700; }
+#proxima-pergunta { margin-top: 4px; }
+#resultado-final { text-align: center; font-size: 16px; font-weight: 700; margin: 15px 0; }
+[hidden] { display: none !important; }
 
-.opcoes button:hover:not(:disabled) {
-    background-color: #e5edff;
-    border-color: #2457d6;
-}
+/* PAINEL */
+.indicadores { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.indicador > span { display: block; font-size: 25px; margin-bottom: 5px; }
+.indicador small { display: block; color: #707b8b; font-size: 12px; }
+.indicador strong { display: block; font-size: 21px; overflow-wrap: anywhere; }
 
-.opcoes button.correta {
-    background-color: #d9f7e5;
-    border-color: #239b56;
-    color: #176b39;
-}
+/* REGISTROS */
+.lista-riscos h3 { margin-bottom: 12px; }
+#lista { list-style: none; overflow-wrap: anywhere; }
+#lista li { border-bottom: 1px solid #e5e8ec; padding: 12px 0; }
+#lista li:last-child { border-bottom: 0; }
+.risco-tipo { display: block; color: #2457d6; }
+.risco-descricao { color: #667181; font-size: 14px; margin: 4px 0 10px; white-space: pre-wrap; }
+#lista .vazio { color: #8a93a0; }
+#lista .botao-remover { width: auto; min-height: 36px; padding: 7px 12px; background: #a83232; font-size: 13px; }
+#lista .botao-remover:hover { background: #852424; }
+.aviso { min-height: 22px; margin-top: 9px; font-size: 13px; }
+.aviso.erro { color: #a32222; }
+.aviso.sucesso { color: #176b39; }
 
-.opcoes button.incorreta {
-    background-color: #ffe2e2;
-    border-color: #d64545;
-    color: #a32222;
-}
+/* RODAPÉ */
+#rodape { background: #202936; color: #fff; padding: 25px 10%; text-align: center; }
+#rodape strong, #rodape span { display: block; }
+#rodape span { color: #aab2bd; font-size: 13px; }
 
-#resposta-quiz {
-    margin: 15px 0;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-#proxima-pergunta {
-    margin-top: 5px;
-}
-
-#resultado-final {
-    text-align: center;
-    font-size: 17px;
-    font-weight: bold;
-    margin: 15px 0;
-}
-
-#reiniciar-quiz[hidden] {
-    display: none;
-}
-
-/* =================================
-   PAINEL DE INDICADORES
-================================= */
-
-.indicadores {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-
-.indicador {
-    background-color: white;
-    border: 1px solid #e0e4e9;
-    border-radius: 9px;
-    padding: 18px;
-    min-width: 0;
-}
-
-.indicador > span {
-    font-size: 25px;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.indicador small {
-    display: block;
-    color: #707b8b;
-    font-size: 12px;
-}
-
-.indicador strong {
-    display: block;
-    font-size: 21px;
-    overflow-wrap: anywhere;
-}
-
-/* =================================
-   LISTA DE RISCOS
-================================= */
-
-.lista-riscos h3 {
-    margin-bottom: 12px;
-}
-
-#lista {
-    list-style: none;
-    overflow-wrap: anywhere;
-}
-
-#lista li {
-    border-bottom: 1px solid #e5e8ec;
-    padding: 12px 0;
-}
-
-#lista li:last-child {
-    border-bottom: none;
-}
-
-.risco-tipo {
-    font-weight: bold;
-    color: #2457d6;
-}
-
-.risco-descricao {
-    color: #667181;
-    font-size: 14px;
-    overflow-wrap: anywhere;
-}
-
-.vazio {
-    color: #8a93a0;
-}
-
-/* =================================
-   RODAPÉ
-================================= */
-
-#rodape {
-    background-color: #202936;
-    color: white;
-    padding: 25px 10%;
-    text-align: center;
-}
-
-#rodape span {
-    color: #aab2bd;
-    font-size: 13px;
-}
-
-/* =================================
-   TABLETS
-================================= */
-
+/* TABLETS */
 @media (max-width: 900px) {
-
-    #topo {
-        padding: 18px 5%;
-    }
-
-    .inicio {
-        padding: 55px 6%;
-        gap: 25px;
-    }
-
-    .inicio h2 {
-        font-size: 36px;
-    }
-
-    .secao {
-        padding: 45px 6%;
-    }
-
-    .indicadores {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  #topo { padding: 16px 5%; }
+  .inicio { padding: 50px 6%; }
+  .secao { padding: 45px 6%; }
+  .indicadores { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* =================================
-   CELULARES
-================================= */
-
+/* CELULARES ANDROID E IPHONE */
 @media (max-width: 600px) {
-
-    body {
-        font-size: 14px;
-    }
-
-    #topo {
-        padding: 15px;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .logo {
-        justify-content: center;
-    }
-
-    .menu {
-        width: 100%;
-        justify-content: center;
-        gap: 10px 14px;
-    }
-
-    .menu a {
-        font-size: 13px;
-    }
-
-    .inicio {
-        min-height: auto;
-        padding: 38px 20px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 25px;
-    }
-
-    .inicio-texto,
-    .inicio-card {
-        width: 100%;
-    }
-
-    .inicio h2 {
-        font-size: 32px;
-    }
-
-    .inicio-texto p {
-        width: 100%;
-    }
-
-    .botao {
-        display: block;
-        text-align: center;
-    }
-
-    .secao {
-        padding: 38px 15px;
-    }
-
-    .titulo {
-        gap: 10px;
-    }
-
-    .titulo h2 {
-        font-size: 21px;
-    }
-
-    .titulo p {
-        font-size: 13px;
-    }
-
-    .consulta,
-    .registro {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .formulario,
-    .resultado,
-    .lista-riscos {
-        width: 100%;
-        padding: 18px;
-    }
-
-    .quiz {
-        padding: 16px;
-    }
-
-    .quiz h3 {
-        font-size: 16px;
-    }
-
-    .opcoes {
-        grid-template-columns: 1fr;
-    }
-
-    .opcoes button {
-        padding: 14px;
-        font-size: 14px;
-    }
-
-    .indicadores {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .indicador {
-        padding: 13px;
-    }
-
-    .indicador strong {
-        font-size: 18px;
-    }
-
-    #rodape {
-        padding: 25px 15px;
-    }
+  body { font-size: 14px; }
+  #topo { padding: 14px 12px; flex-direction: column; align-items: stretch; }
+  .logo { justify-content: center; }
+  .menu { justify-content: center; gap: 8px 13px; }
+  .menu a { font-size: 13px; padding: 4px 0; }
+  .inicio { min-height: auto; padding: 36px 18px; flex-direction: column; align-items: stretch; gap: 22px; }
+  .inicio-card { flex: auto; }
+  .botao-link { display: block; text-align: center; }
+  .secao { padding: 36px 14px; }
+  .titulo { gap: 10px; }
+  .titulo h2 { font-size: 21px; }
+  .titulo p { font-size: 13px; }
+  .duas-colunas { grid-template-columns: 1fr; gap: 13px; }
+  .cartao { padding: 17px; }
+  .opcoes { grid-template-columns: 1fr; }
+  .opcoes button { min-height: 48px; }
+  .indicadores { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .indicador { padding: 13px; }
+  .indicador strong { font-size: 18px; }
+  #rodape { padding: 24px 14px; }
 }
 
-/* =================================
-   CELULARES PEQUENOS
-================================= */
-
+/* CELULARES MUITO PEQUENOS */
 @media (max-width: 360px) {
-
-    .inicio h2 {
-        font-size: 27px;
-    }
-
-    .menu {
-        gap: 8px;
-    }
-
-    .menu a {
-        font-size: 12px;
-    }
-
-    .indicadores {
-        grid-template-columns: 1fr;
-    }
-
-    .titulo h2 {
-        font-size: 19px;
-    }
-
-    .quiz-info {
-        font-size: 12px;
-    }
+  .menu { gap: 7px 9px; }
+  .menu a { font-size: 12px; }
+  .indicadores { grid-template-columns: 1fr; }
+  .titulo h2 { font-size: 19px; }
+  .quiz-info { font-size: 12px; }
 }
