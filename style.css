@@ -1,509 +1,106 @@
 
-/* RESET BÁSICO */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+// VARIÁVEIS DO PAINEL
+var dicasConsultadas = 0;
+var perguntasRespondidas = 0;
+var acertos = 0;
 
-html {
-    scroll-behavior: smooth;
-}
+// FUNÇÃO DE CONSULTAR A SITUAÇÃO
+function consultarSituacao() {
+    var situacao = document.getElementById("situacao").value;
+    var resultado = document.getElementById("resultado");
+    var msg = "";
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
-    color: #202936;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* CABEÇALHO */
-#topo {
-    background: #ffffff;
-    border-bottom: 1px solid #e2e6eb;
-    padding: 18px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo span {
-    font-size: 30px;
-}
-
-.logo h1 {
-    font-size: 20px;
-}
-
-.logo p {
-    color: #687386;
-    font-size: 13px;
-}
-
-.menu {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: #4d5868;
-    font-size: 14px;
-}
-
-.menu a:hover {
-    color: #2457d6;
-    text-decoration: underline;
-}
-
-/* INÍCIO */
-.inicio {
-    min-height: 500px;
-    padding: 80px 10%;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-}
-
-.inicio-texto {
-    width: 60%;
-}
-
-.tag {
-    color: #2457d6;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.inicio h2 {
-    font-size: 48px;
-    line-height: 1.1;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.inicio h2 strong {
-    color: #2457d6;
-}
-
-.inicio-texto p {
-    color: #5e6877;
-    margin-bottom: 30px;
-    width: 90%;
-}
-
-.botao {
-    display: inline-block;
-    background-color: #2457d6;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.botao:hover {
-    background-color: #1945b5;
-}
-
-.inicio-card {
-    width: 35%;
-    background-color: #f0f4ff;
-    border: 1px solid #dce5ff;
-    padding: 30px;
-    border-radius: 8px;
-}
-
-.inicio-card span {
-    font-size: 35px;
-}
-
-.inicio-card h3 {
-    margin: 10px 0;
-}
-
-.inicio-card p {
-    color: #5e6877;
-    font-size: 14px;
-}
-
-/* SEÇÕES GERAIS */
-.secao {
-    padding: 70px 10%;
-}
-
-.titulo {
-    margin-bottom: 30px;
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.titulo > span {
-    color: #2457d6;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.titulo h2 {
-    font-size: 27px;
-}
-
-.titulo p {
-    color: #707b8b;
-    font-size: 14px;
-}
-
-/* FORMULÁRIOS */
-.consulta,
-.registro {
-    display: flex;
-    gap: 25px;
-    align-items: stretch;
-}
-
-.formulario,
-.resultado,
-.lista-riscos {
-    background-color: white;
-    border: 1px solid #e0e4e9;
-    border-radius: 8px;
-    padding: 25px;
-    width: 50%;
-    min-width: 0;
-}
-
-label {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-select,
-textarea {
-    width: 100%;
-    border: 1px solid #cfd5dd;
-    border-radius: 5px;
-    padding: 12px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    background-color: white;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-textarea {
-    height: 120px;
-    resize: vertical;
-}
-
-button {
-    border: none;
-    border-radius: 5px;
-    background-color: #2457d6;
-    color: white;
-    padding: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #1945b5;
-}
-
-.resultado {
-    background-color: #f9fafc;
-}
-
-.resultado > span {
-    font-size: 30px;
-}
-
-.resultado h3 {
-    margin-top: 10px;
-    margin-bottom: 5px;
-}
-
-.resultado p {
-    color: #657080;
-}
-
-/* QUIZ */
-.quiz {
-    background-color: white;
-    border: 1px solid #e0e4e9;
-    border-radius: 8px;
-    padding: 30px;
-    max-width: 800px;
-}
-
-.numero {
-    color: #2457d6;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.quiz h3 {
-    margin-top: 10px;
-    margin-bottom: 25px;
-    font-size: 20px;
-}
-
-.opcoes button {
-    background-color: #f1f3f6;
-    color: #303947;
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-.opcoes button:hover {
-    background-color: #e5e9ef;
-}
-
-#resposta-quiz {
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-/* PAINEL */
-.indicadores {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-}
-
-.indicador {
-    background-color: white;
-    border: 1px solid #e0e4e9;
-    border-radius: 8px;
-    padding: 20px;
-    min-width: 0;
-}
-
-.indicador > span {
-    font-size: 25px;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.indicador small {
-    display: block;
-    color: #707b8b;
-    font-size: 12px;
-}
-
-.indicador strong {
-    display: block;
-    font-size: 21px;
-}
-
-/* LISTA DE RISCOS */
-.lista-riscos h3 {
-    margin-bottom: 15px;
-}
-
-#lista {
-    list-style: none;
-    overflow-wrap: anywhere;
-}
-
-#lista li {
-    border-bottom: 1px solid #e5e8ec;
-    padding: 12px 0;
-}
-
-#lista li:last-child {
-    border-bottom: none;
-}
-
-.risco-tipo {
-    font-weight: bold;
-    color: #2457d6;
-}
-
-.risco-descricao {
-    color: #667181;
-    font-size: 14px;
-    overflow-wrap: anywhere;
-}
-
-.vazio {
-    color: #8a93a0;
-}
-
-/* RODAPÉ */
-#rodape {
-    background-color: #202936;
-    color: white;
-    padding: 30px 10%;
-    text-align: center;
-}
-
-#rodape span {
-    color: #aab2bd;
-    font-size: 13px;
-}
-
-/* TABLETS */
-@media (max-width: 900px) {
-    .inicio {
-        padding: 60px 6%;
-        gap: 25px;
+    if (situacao == "") {
+        msg = "Selecione uma situação para receber uma orientação.";
     }
 
-    .secao {
-        padding: 50px 6%;
+    if (situacao == "link") {
+        msg = "Não clique imediatamente. Verifique o endereço do site e confirme se o remetente é confiável.";
     }
 
-    .indicadores {
-        grid-template-columns: repeat(2, 1fr);
+    if (situacao == "email") {
+        msg = "Evite clicar em links ou baixar arquivos de e-mails desconhecidos. Confira o endereço do remetente.";
     }
 
-    .inicio h2 {
-        font-size: 38px;
+    if (situacao == "senha") {
+        msg = "Nunca informe sua senha por mensagem, e-mail ou telefone. Empresas confiáveis não costumam pedir sua senha dessa forma.";
+    }
+
+    if (situacao == "promocao") {
+        msg = "Desconfie de ofertas muito abaixo do preço normal. Pesquise a empresa e confira o endereço do site.";
+    }
+
+    if (situacao == "perfil") {
+        msg = "Tenha cuidado com perfis desconhecidos. Verifique informações, fotos, seguidores e evite compartilhar dados pessoais.";
+    }
+
+    if (situacao == "arquivo") {
+        msg = "Não abra arquivos desconhecidos. Eles podem conter programas maliciosos. Confirme quem enviou antes de abrir.";
+    }
+
+    resultado.querySelector("p").textContent = msg;
+
+    if (situacao != "") {
+        dicasConsultadas = dicasConsultadas + 1;
+        document.getElementById("dicas").textContent = dicasConsultadas;
     }
 }
 
-/* CELULARES */
-@media (max-width: 600px) {
-    body {
-        font-size: 14px;
-    }
+// FUNÇÃO DO QUIZ
+function responderQuiz(correta) {
+    var resposta = document.getElementById("resposta-quiz");
 
-    #topo {
-        padding: 15px;
-        flex-direction: column;
-        align-items: center;
-    }
+    perguntasRespondidas = perguntasRespondidas + 1;
 
-    .logo {
-        justify-content: center;
-    }
+    document.getElementById("perguntas").textContent = perguntasRespondidas;
 
-    .menu {
-        width: 100%;
-        justify-content: center;
-        gap: 10px 15px;
-    }
+    if (correta == true) {
+        resposta.textContent = "✓ Resposta correta! Sempre verifique a origem do link antes de clicar.";
 
-    .menu a {
-        font-size: 13px;
-        margin: 0;
-    }
+        acertos = acertos + 1;
 
-    .inicio {
-        min-height: auto;
-        padding: 40px 20px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 25px;
-    }
-
-    .inicio-texto,
-    .inicio-card {
-        width: 100%;
-    }
-
-    .inicio h2 {
-        font-size: 32px;
-    }
-
-    .inicio-texto p {
-        width: 100%;
-    }
-
-    .botao {
-        display: block;
-        text-align: center;
-    }
-
-    .secao {
-        padding: 40px 15px;
-    }
-
-    .titulo {
-        gap: 10px;
-    }
-
-    .titulo h2 {
-        font-size: 22px;
-    }
-
-    .titulo p {
-        font-size: 13px;
-    }
-
-    .consulta,
-    .registro {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .formulario,
-    .resultado,
-    .lista-riscos {
-        width: 100%;
-        padding: 18px;
-    }
-
-    .quiz {
-        padding: 20px;
-    }
-
-    .quiz h3 {
-        font-size: 17px;
-    }
-
-    .indicadores {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .indicador {
-        padding: 15px;
-    }
-
-    .indicador strong {
-        font-size: 19px;
-    }
-
-    #rodape {
-        padding: 25px 15px;
+        document.getElementById("acertos").textContent = acertos;
+    } else {
+        resposta.textContent = "✕ Resposta incorreta. O mais seguro é verificar a origem do link.";
     }
 }
 
-/* CELULARES MUITO PEQUENOS */
-@media (max-width: 360px) {
-    .inicio h2 {
-        font-size: 27px;
+// BOTÃO DE REGISTRAR O RISCO
+function registrarRisco() {
+    var tipo = document.getElementById("tipoRisco").value;
+    var descricao = document.getElementById("descricao").value;
+    var lista = document.getElementById("lista");
+
+    if (tipo == "" || descricao.trim() == "") {
+        alert("Preencha o tipo de risco e a descrição.");
+        return;
     }
 
-    .menu {
-        gap: 8px;
+    var itemVazio = document.querySelector(".vazio");
+
+    if (itemVazio) {
+        itemVazio.remove();
     }
 
-    .menu a {
-        font-size: 12px;
-    }
+    var novoRisco = document.createElement("li");
 
-    .indicadores {
-        grid-template-columns: 1fr;
-    }
+    // CRIANDO O TIPO DO RISCO
+    var tipoRisco = document.createElement("div");
+    tipoRisco.className = "risco-tipo";
+    tipoRisco.textContent = tipo;
 
-    .titulo h2 {
-        font-size: 19px;
-    }
+    // CRIANDO A DESCRIÇÃO
+    var descricaoRisco = document.createElement("div");
+    descricaoRisco.className = "risco-descricao";
+    descricaoRisco.textContent = descricao;
+
+    // ADICIONANDO À LISTA
+    novoRisco.appendChild(tipoRisco);
+    novoRisco.appendChild(descricaoRisco);
+
+    lista.appendChild(novoRisco);
+
+    // LIMPANDO OS CAMPOS
+    document.getElementById("tipoRisco").value = "";
+    document.getElementById("descricao").value = "";
 }
