@@ -1,5 +1,8 @@
 
-/* RESET BÁSICO */
+/* =================================
+   RESET E CONFIGURAÇÕES GERAIS
+================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +11,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 20px;
 }
 
 body {
@@ -18,14 +22,21 @@ body {
     overflow-x: hidden;
 }
 
-/* CABEÇALHO */
+button, select, textarea {
+    font: inherit;
+}
+
+/* =================================
+   CABEÇALHO
+================================= */
+
 #topo {
     background: #ffffff;
     border-bottom: 1px solid #e2e6eb;
     padding: 18px 8%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 15px;
 }
@@ -52,25 +63,28 @@ body {
 .menu {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 18px;
 }
 
 .menu a {
     text-decoration: none;
     color: #4d5868;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .menu a:hover {
     color: #2457d6;
-    text-decoration: underline;
 }
 
-/* INÍCIO */
+/* =================================
+   INÍCIO
+================================= */
+
 .inicio {
-    min-height: 500px;
-    padding: 80px 10%;
-    background-color: #ffffff;
+    min-height: 420px;
+    padding: 70px 10%;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,10 +103,9 @@ body {
 }
 
 .inicio h2 {
-    font-size: 48px;
-    line-height: 1.1;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    font-size: 46px;
+    line-height: 1.15;
+    margin: 15px 0;
 }
 
 .inicio h2 strong {
@@ -101,8 +114,8 @@ body {
 
 .inicio-texto p {
     color: #5e6877;
-    margin-bottom: 30px;
-    width: 90%;
+    margin-bottom: 25px;
+    max-width: 500px;
 }
 
 .botao {
@@ -113,6 +126,7 @@ body {
     border-radius: 6px;
     text-decoration: none;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .botao:hover {
@@ -123,8 +137,8 @@ body {
     width: 35%;
     background-color: #f0f4ff;
     border: 1px solid #dce5ff;
-    padding: 30px;
-    border-radius: 8px;
+    padding: 28px;
+    border-radius: 10px;
 }
 
 .inicio-card span {
@@ -140,13 +154,16 @@ body {
     font-size: 14px;
 }
 
-/* SEÇÕES GERAIS */
+/* =================================
+   SEÇÕES
+================================= */
+
 .secao {
-    padding: 70px 10%;
+    padding: 60px 10%;
 }
 
 .titulo {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     display: flex;
     align-items: flex-start;
     gap: 15px;
@@ -159,7 +176,7 @@ body {
 }
 
 .titulo h2 {
-    font-size: 27px;
+    font-size: 26px;
 }
 
 .titulo p {
@@ -167,11 +184,14 @@ body {
     font-size: 14px;
 }
 
-/* FORMULÁRIOS */
+/* =================================
+   FORMULÁRIOS
+================================= */
+
 .consulta,
 .registro {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     align-items: stretch;
 }
 
@@ -180,49 +200,73 @@ body {
 .lista-riscos {
     background-color: white;
     border: 1px solid #e0e4e9;
-    border-radius: 8px;
-    padding: 25px;
+    border-radius: 9px;
+    padding: 23px;
     width: 50%;
     min-width: 0;
 }
 
 label {
+    display: block;
     font-size: 14px;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 select,
 textarea {
     width: 100%;
     border: 1px solid #cfd5dd;
-    border-radius: 5px;
+    border-radius: 6px;
     padding: 12px;
     font-family: Arial, sans-serif;
     font-size: 14px;
     background-color: white;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+select {
+    cursor: pointer;
 }
 
 textarea {
-    height: 120px;
+    height: 110px;
     resize: vertical;
+}
+
+select:focus,
+textarea:focus {
+    outline: 2px solid #2457d6;
+    outline-offset: 2px;
 }
 
 button {
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     background-color: #2457d6;
     color: white;
     padding: 12px;
     cursor: pointer;
     font-size: 14px;
+    font-weight: bold;
     width: 100%;
+    transition: 0.2s;
 }
 
-button:hover {
+button:hover:not(:disabled) {
     background-color: #1945b5;
 }
+
+button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* RESULTADO DA CONSULTA */
 
 .resultado {
     background-color: #f9fafc;
@@ -233,52 +277,115 @@ button:hover {
 }
 
 .resultado h3 {
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin: 8px 0;
 }
 
 .resultado p {
     color: #657080;
+    overflow-wrap: anywhere;
 }
 
-/* QUIZ */
+/* =================================
+   QUIZ
+================================= */
+
 .quiz {
     background-color: white;
     border: 1px solid #e0e4e9;
-    border-radius: 8px;
-    padding: 30px;
-    max-width: 800px;
+    border-radius: 10px;
+    padding: 23px;
+    max-width: 700px;
+    margin: auto;
 }
 
-.numero {
+.quiz-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
     color: #2457d6;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 
+.barra-progresso {
+    width: 100%;
+    height: 8px;
+    background-color: #e5eaf2;
+    border-radius: 20px;
+    margin: 15px 0 20px;
+    overflow: hidden;
+}
+
+#progresso {
+    width: 0%;
+    height: 100%;
+    background-color: #2457d6;
+    border-radius: 20px;
+    transition: width 0.3s;
+}
+
 .quiz h3 {
-    margin-top: 10px;
-    margin-bottom: 25px;
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.opcoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 .opcoes button {
     background-color: #f1f3f6;
     color: #303947;
     text-align: left;
-    margin-bottom: 10px;
+    border: 2px solid transparent;
+    min-height: 48px;
 }
 
-.opcoes button:hover {
-    background-color: #e5e9ef;
+.opcoes button:hover:not(:disabled) {
+    background-color: #e5edff;
+    border-color: #2457d6;
+}
+
+.opcoes button.correta {
+    background-color: #d9f7e5;
+    border-color: #239b56;
+    color: #176b39;
+}
+
+.opcoes button.incorreta {
+    background-color: #ffe2e2;
+    border-color: #d64545;
+    color: #a32222;
 }
 
 #resposta-quiz {
-    margin-top: 20px;
+    margin: 15px 0;
+    font-size: 14px;
     font-weight: bold;
 }
 
-/* PAINEL */
+#proxima-pergunta {
+    margin-top: 5px;
+}
+
+#resultado-final {
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+#reiniciar-quiz[hidden] {
+    display: none;
+}
+
+/* =================================
+   PAINEL DE INDICADORES
+================================= */
+
 .indicadores {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -288,15 +395,15 @@ button:hover {
 .indicador {
     background-color: white;
     border: 1px solid #e0e4e9;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 9px;
+    padding: 18px;
     min-width: 0;
 }
 
 .indicador > span {
     font-size: 25px;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .indicador small {
@@ -308,11 +415,15 @@ button:hover {
 .indicador strong {
     display: block;
     font-size: 21px;
+    overflow-wrap: anywhere;
 }
 
-/* LISTA DE RISCOS */
+/* =================================
+   LISTA DE RISCOS
+================================= */
+
 .lista-riscos h3 {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 #lista {
@@ -344,11 +455,14 @@ button:hover {
     color: #8a93a0;
 }
 
-/* RODAPÉ */
+/* =================================
+   RODAPÉ
+================================= */
+
 #rodape {
     background-color: #202936;
     color: white;
-    padding: 30px 10%;
+    padding: 25px 10%;
     text-align: center;
 }
 
@@ -357,28 +471,40 @@ button:hover {
     font-size: 13px;
 }
 
-/* TABLETS */
+/* =================================
+   TABLETS
+================================= */
+
 @media (max-width: 900px) {
+
+    #topo {
+        padding: 18px 5%;
+    }
+
     .inicio {
-        padding: 60px 6%;
+        padding: 55px 6%;
         gap: 25px;
     }
 
+    .inicio h2 {
+        font-size: 36px;
+    }
+
     .secao {
-        padding: 50px 6%;
+        padding: 45px 6%;
     }
 
     .indicadores {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .inicio h2 {
-        font-size: 38px;
-    }
 }
 
-/* CELULARES */
+/* =================================
+   CELULARES
+================================= */
+
 @media (max-width: 600px) {
+
     body {
         font-size: 14px;
     }
@@ -396,17 +522,16 @@ button:hover {
     .menu {
         width: 100%;
         justify-content: center;
-        gap: 10px 15px;
+        gap: 10px 14px;
     }
 
     .menu a {
         font-size: 13px;
-        margin: 0;
     }
 
     .inicio {
         min-height: auto;
-        padding: 40px 20px;
+        padding: 38px 20px;
         flex-direction: column;
         align-items: stretch;
         gap: 25px;
@@ -431,7 +556,7 @@ button:hover {
     }
 
     .secao {
-        padding: 40px 15px;
+        padding: 38px 15px;
     }
 
     .titulo {
@@ -439,7 +564,7 @@ button:hover {
     }
 
     .titulo h2 {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .titulo p {
@@ -460,11 +585,20 @@ button:hover {
     }
 
     .quiz {
-        padding: 20px;
+        padding: 16px;
     }
 
     .quiz h3 {
-        font-size: 17px;
+        font-size: 16px;
+    }
+
+    .opcoes {
+        grid-template-columns: 1fr;
+    }
+
+    .opcoes button {
+        padding: 14px;
+        font-size: 14px;
     }
 
     .indicadores {
@@ -473,11 +607,11 @@ button:hover {
     }
 
     .indicador {
-        padding: 15px;
+        padding: 13px;
     }
 
     .indicador strong {
-        font-size: 19px;
+        font-size: 18px;
     }
 
     #rodape {
@@ -485,8 +619,12 @@ button:hover {
     }
 }
 
-/* CELULARES MUITO PEQUENOS */
+/* =================================
+   CELULARES PEQUENOS
+================================= */
+
 @media (max-width: 360px) {
+
     .inicio h2 {
         font-size: 27px;
     }
@@ -505,5 +643,9 @@ button:hover {
 
     .titulo h2 {
         font-size: 19px;
+    }
+
+    .quiz-info {
+        font-size: 12px;
     }
 }
