@@ -1,209 +1,331 @@
+"use strict";
 
 // ========================================
 // VARIÁVEIS DO PAINEL
 // ========================================
 
-var dicasConsultadas = 0;
-var perguntasRespondidas = 0;
-var acertos = 0;
+let dicasConsultadas = 0;
+let perguntasRespondidas = 0;
+let acertos = 0;
 
 // ========================================
 // CONSULTAR SITUAÇÃO
 // ========================================
 
+const orientacoes = {
+  link: "Não clique imediatamente. Confira o endereço do site por outro caminho e confirme se o remetente é confiável.",
+
+  email: "Evite clicar em links ou baixar arquivos de e-mails desconhecidos. Confira cuidadosamente o endereço do remetente.",
+
+  senha: "Nunca informe sua senha por mensagem, e-mail ou telefone. Serviços confiáveis não pedem sua senha dessa maneira.",
+
+  promocao: "Desconfie de ofertas muito abaixo do preço normal. Pesquise a empresa e confira se a promoção aparece no site oficial.",
+
+  perfil: "Tenha cuidado com perfis desconhecidos. Verifique as informações e evite compartilhar dados pessoais.",
+
+  arquivo: "Não abra arquivos inesperados. Confirme com a pessoa que enviou e mantenha o aparelho atualizado."
+};
+
 function consultarSituacao() {
 
-    var situacao = document.getElementById("situacao").value;
-    var resultado = document.getElementById("resultado");
-    var msg = "";
+  const situacao = document.getElementById("situacao").value;
+  const texto = document.getElementById("texto-resultado");
 
-    if (situacao == "") {
-        msg = "Selecione uma situação para receber uma orientação.";
-    }
-    else if (situacao == "link") {
-        msg = "Não clique imediatamente. Verifique o endereço do site e confirme se o remetente é confiável.";
-    }
-    else if (situacao == "email") {
-        msg = "Evite clicar em links ou baixar arquivos de e-mails desconhecidos. Confira o endereço do remetente.";
-    }
-    else if (situacao == "senha") {
-        msg = "Nunca informe sua senha por mensagem, e-mail ou telefone. Mantenha seus dados protegidos.";
-    }
-    else if (situacao == "promocao") {
-        msg = "Desconfie de ofertas muito abaixo do preço normal. Pesquise a empresa e confira o endereço do site.";
-    }
-    else if (situacao == "perfil") {
-        msg = "Tenha cuidado com perfis desconhecidos. Verifique informações e evite compartilhar dados pessoais.";
-    }
-    else if (situacao == "arquivo") {
-        msg = "Não abra arquivos desconhecidos. Confirme quem enviou antes de abrir.";
-    }
+  if (situacao === "") {
+    texto.textContent = "Selecione uma situação antes de pedir a orientação.";
+    return;
+  }
 
-    resultado.querySelector("p").textContent = msg;
+  texto.textContent =
+    orientacoes[situacao] ||
+    "Não foi possível encontrar uma orientação para essa situação.";
 
-    if (situacao != "") {
-        dicasConsultadas++;
+  dicasConsultadas++;
 
-        document.getElementById("dicas").textContent =
-            dicasConsultadas;
-    }
+  document.getElementById("dicas").textContent =
+    dicasConsultadas;
 }
 
 // ========================================
 // PERGUNTAS DO QUIZ - 25 QUESTÕES
 // ========================================
 
-var perguntas = [
+const perguntas = [
 
-    {
-        pergunta: "1. O que é phishing?",
-        opcoes: ["Um jogo", "Um golpe para roubar dados", "Um aplicativo", "Uma rede social"],
-        correta: 1
-    },
+  {
+    pergunta: "1. O que é phishing?",
+    opcoes: [
+      "Um jogo",
+      "Um golpe para roubar dados",
+      "Um aplicativo",
+      "Uma rede social"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "2. Como proteger sua senha?",
-        opcoes: ["Compartilhar", "Usar 123456", "Criar uma senha forte", "Publicar na internet"],
-        correta: 2
-    },
+  {
+    pergunta: "2. Como proteger sua senha?",
+    opcoes: [
+      "Compartilhar",
+      "Usar 123456",
+      "Criar uma senha forte e exclusiva",
+      "Publicar na internet"
+    ],
+    correta: 2
+  },
 
-    {
-        pergunta: "3. O que fazer com um link suspeito?",
-        opcoes: ["Clicar", "Compartilhar", "Verificar a origem", "Informar sua senha"],
-        correta: 2
-    },
+  {
+    pergunta: "3. O que fazer com um link suspeito?",
+    opcoes: [
+      "Clicar",
+      "Compartilhar",
+      "Verificar a origem sem abrir",
+      "Informar sua senha"
+    ],
+    correta: 2
+  },
 
-    {
-        pergunta: "4. O que é uma fake news?",
-        opcoes: ["Notícia falsa", "Notícia oficial", "Livro digital", "Mensagem privada"],
-        correta: 0
-    },
+  {
+    pergunta: "4. O que é uma fake news?",
+    opcoes: [
+      "Notícia falsa ou enganosa",
+      "Notícia oficial",
+      "Livro digital",
+      "Mensagem privada"
+    ],
+    correta: 0
+  },
 
-    {
-        pergunta: "5. O que significa HTTPS?",
-        opcoes: ["Um jogo", "Conexão protegida por criptografia", "Uma senha", "Um vírus"],
-        correta: 1
-    },
+  {
+    pergunta: "5. O que o HTTPS indica?",
+    opcoes: [
+      "Que o site é sempre confiável",
+      "Que a conexão usa criptografia",
+      "Que o site não tem anúncios",
+      "Que não existem golpes"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "6. O que é um vírus digital?",
-        opcoes: ["Um programa malicioso", "Um navegador", "Um site", "Uma senha"],
-        correta: 0
-    },
+  {
+    pergunta: "6. O que é um vírus digital?",
+    opcoes: [
+      "Um tipo de programa malicioso",
+      "Um navegador",
+      "Um site",
+      "Uma senha"
+    ],
+    correta: 0
+  },
 
-    {
-        pergunta: "7. O que fazer ao receber um e-mail desconhecido?",
-        opcoes: ["Abrir tudo", "Verificar o remetente", "Enviar senha", "Clicar nos links"],
-        correta: 1
-    },
+  {
+    pergunta: "7. O que fazer ao receber um e-mail desconhecido?",
+    opcoes: [
+      "Abrir todos os anexos",
+      "Verificar o remetente",
+      "Enviar sua senha",
+      "Clicar em todos os links"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "8. O que é autenticação em duas etapas?",
-        opcoes: ["Duas contas", "Uma proteção extra de acesso", "Duas senhas iguais", "Um aplicativo de jogos"],
-        correta: 1
-    },
+  {
+    pergunta: "8. O que é autenticação em duas etapas?",
+    opcoes: [
+      "Duas contas",
+      "Uma proteção extra para confirmar o acesso",
+      "Duas senhas iguais",
+      "Um aplicativo de jogos"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "9. Qual destes é um dado pessoal?",
-        opcoes: ["CPF", "Nome de um planeta", "Cor azul", "Número aleatório"],
-        correta: 0
-    },
+  {
+    pergunta: "9. Qual destes é um dado pessoal?",
+    opcoes: [
+      "CPF",
+      "Nome de um planeta",
+      "Cor azul",
+      "Número aleatório sem relação com alguém"
+    ],
+    correta: 0
+  },
 
-    {
-        pergunta: "10. O que fazer com uma promoção suspeita?",
-        opcoes: ["Comprar rápido", "Enviar dados", "Conferir o site oficial", "Compartilhar"],
-        correta: 2
-    },
+  {
+    pergunta: "10. O que fazer com uma promoção suspeita?",
+    opcoes: [
+      "Comprar rapidamente",
+      "Enviar seus dados",
+      "Conferir no site oficial da loja",
+      "Compartilhar sem verificar"
+    ],
+    correta: 2
+  },
 
-    {
-        pergunta: "11. O que é cyberbullying?",
-        opcoes: ["Jogo online", "Intimidação e agressão no ambiente digital", "Pesquisa escolar", "Aplicativo"],
-        correta: 1
-    },
+  {
+    pergunta: "11. O que é cyberbullying?",
+    opcoes: [
+      "Jogo online",
+      "Intimidação ou agressão no ambiente digital",
+      "Pesquisa escolar",
+      "Aplicativo"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "12. Por que atualizar aplicativos?",
-        opcoes: ["Para ocupar espaço", "Para melhorar segurança e funcionamento", "Para apagar contas", "Para perder dados"],
-        correta: 1
-    },
+  {
+    pergunta: "12. Por que atualizar aplicativos?",
+    opcoes: [
+      "Para ocupar espaço",
+      "Para corrigir falhas e melhorar a segurança",
+      "Para apagar contas",
+      "Para perder dados"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "13. O que é uma senha forte?",
-        opcoes: ["123456", "Data de nascimento", "Combinação difícil de adivinhar", "Nome próprio"],
-        correta: 2
-    },
+  {
+    pergunta: "13. O que é uma senha forte?",
+    opcoes: [
+      "123456",
+      "Data de nascimento",
+      "Combinação longa e difícil de adivinhar",
+      "Nome próprio"
+    ],
+    correta: 2
+  },
 
-    {
-        pergunta: "14. O que fazer em computadores públicos?",
-        opcoes: ["Salvar senhas", "Deixar a conta aberta", "Sair da conta ao terminar", "Compartilhar dados"],
-        correta: 2
-    },
+  {
+    pergunta: "14. O que fazer em computadores públicos?",
+    opcoes: [
+      "Salvar suas senhas",
+      "Deixar a conta aberta",
+      "Sair da conta ao terminar",
+      "Compartilhar seus dados"
+    ],
+    correta: 2
+  },
 
-    {
-        pergunta: "15. O que é malware?",
-        opcoes: ["Programa malicioso", "Rede social", "Site educativo", "Jogo"],
-        correta: 0
-    },
+  {
+    pergunta: "15. O que é malware?",
+    opcoes: [
+      "Programa malicioso",
+      "Rede social",
+      "Site educativo",
+      "Jogo"
+    ],
+    correta: 0
+  },
 
-    {
-        pergunta: "16. Como identificar uma notícia falsa?",
-        opcoes: ["Acreditar no título", "Verificar fontes confiáveis", "Compartilhar", "Ignorar a fonte"],
-        correta: 1
-    },
+  {
+    pergunta: "16. Como identificar uma notícia falsa?",
+    opcoes: [
+      "Acreditar apenas no título",
+      "Verificar fontes e outras publicações confiáveis",
+      "Compartilhar imediatamente",
+      "Ignorar a fonte"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "17. O que é roubo de identidade digital?",
-        opcoes: ["Criar um perfil", "Usar dados de outra pessoa sem autorização", "Trocar uma senha", "Baixar um aplicativo"],
-        correta: 1
-    },
+  {
+    pergunta: "17. O que é roubo de identidade digital?",
+    opcoes: [
+      "Criar um perfil próprio",
+      "Usar dados de outra pessoa sem autorização",
+      "Trocar uma senha",
+      "Baixar um aplicativo"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "18. O que fazer ao perder acesso à conta?",
-        opcoes: ["Ignorar", "Procurar a recuperação oficial da conta", "Divulgar a senha", "Publicar seus dados"],
-        correta: 1
-    },
+  {
+    pergunta: "18. O que fazer ao perder acesso à conta?",
+    opcoes: [
+      "Ignorar o problema",
+      "Usar a recuperação oficial da plataforma",
+      "Divulgar a senha",
+      "Publicar seus dados"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "19. Qual é o risco de baixar arquivos desconhecidos?",
-        opcoes: ["Melhorar a internet", "Instalar programas maliciosos", "Aumentar a bateria", "Proteger a conta"],
-        correta: 1
-    },
+  {
+    pergunta: "19. Qual é o risco de baixar arquivos desconhecidos?",
+    opcoes: [
+      "Melhorar a internet",
+      "Baixar conteúdo malicioso",
+      "Aumentar a bateria",
+      "Proteger automaticamente a conta"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "20. O que é privacidade digital?",
-        opcoes: ["Proteção de informações pessoais", "Compartilhar tudo", "Publicar senhas", "Usar qualquer site"],
-        correta: 0
-    },
+  {
+    pergunta: "20. O que é privacidade digital?",
+    opcoes: [
+      "Proteção e controle das informações pessoais",
+      "Compartilhar tudo",
+      "Publicar senhas",
+      "Usar qualquer site sem cuidado"
+    ],
+    correta: 0
+  },
 
-    {
-        pergunta: "21. O que fazer com um perfil falso?",
-        opcoes: ["Enviar dados", "Denunciar e bloquear", "Compartilhar informações", "Confiar imediatamente"],
-        correta: 1
-    },
+  {
+    pergunta: "21. O que fazer com um perfil falso?",
+    opcoes: [
+      "Enviar dados pessoais",
+      "Denunciar e bloquear na plataforma",
+      "Compartilhar informações",
+      "Confiar imediatamente"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "22. Para que serve um antivírus?",
-        opcoes: ["Criar sites", "Ajudar a detectar ameaças digitais", "Aumentar seguidores", "Criar senhas"],
-        correta: 1
-    },
+  {
+    pergunta: "22. Para que serve um antivírus?",
+    opcoes: [
+      "Criar sites",
+      "Ajudar a detectar e bloquear ameaças",
+      "Aumentar seguidores",
+      "Criar senhas"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "23. O que é engenharia social?",
-        opcoes: ["Construção de prédios", "Manipulação de pessoas para obter informações", "Criação de jogos", "Programação de sites"],
-        correta: 1
-    },
+  {
+    pergunta: "23. O que é engenharia social?",
+    opcoes: [
+      "Construção de prédios",
+      "Manipulação de pessoas para obter informações",
+      "Criação de jogos",
+      "Programação de sites"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "24. Para que serve o backup?",
-        opcoes: ["Apagar arquivos", "Criar cópias de segurança", "Compartilhar senhas", "Excluir aplicativos"],
-        correta: 1
-    },
+  {
+    pergunta: "24. Para que serve o backup?",
+    opcoes: [
+      "Apagar arquivos",
+      "Criar cópias de segurança",
+      "Compartilhar senhas",
+      "Excluir aplicativos"
+    ],
+    correta: 1
+  },
 
-    {
-        pergunta: "25. Qual é a melhor atitude na internet?",
-        opcoes: ["Confiar em tudo", "Compartilhar dados", "Pensar e verificar antes de clicar", "Usar qualquer senha"],
-        correta: 2
-    }
+  {
+    pergunta: "25. Qual é uma boa atitude na internet?",
+    opcoes: [
+      "Confiar em tudo",
+      "Compartilhar dados pessoais",
+      "Pensar e verificar antes de clicar",
+      "Usar a mesma senha em todos os sites"
+    ],
+    correta: 2
+  }
 
 ];
 
@@ -211,9 +333,27 @@ var perguntas = [
 // VARIÁVEIS DO QUIZ
 // ========================================
 
-var perguntaAtual = 0;
-var pontos = 0;
-var respondeu = false;
+let perguntaAtual = 0;
+let pontos = 0;
+let respondeu = false;
+
+const elemento = (id) => document.getElementById(id);
+
+// ========================================
+// ATUALIZAR PAINEL
+// ========================================
+
+function atualizarPainelQuiz() {
+
+  elemento("perguntas").textContent =
+    perguntasRespondidas;
+
+  elemento("acertos").textContent =
+    acertos;
+
+  elemento("pontos").textContent =
+    pontos;
+}
 
 // ========================================
 // MOSTRAR PERGUNTA
@@ -221,119 +361,119 @@ var respondeu = false;
 
 function mostrarPergunta() {
 
-    respondeu = false;
+  respondeu = false;
 
-    var p = perguntas[perguntaAtual];
+  const atual = perguntas[perguntaAtual];
 
-    document.getElementById("numero-pergunta").textContent =
-        "Pergunta " + (perguntaAtual + 1) + "/25";
+  elemento("numero-pergunta").textContent =
+    `Pergunta ${perguntaAtual + 1}/${perguntas.length}`;
 
-    document.getElementById("pergunta").textContent =
-        p.pergunta;
+  elemento("pergunta").textContent =
+    atual.pergunta;
 
-    document.getElementById("pontos").textContent =
-        pontos;
+  elemento("resposta-quiz").textContent = "";
 
-    document.getElementById("progresso").style.width =
-        (perguntaAtual / perguntas.length * 100) + "%";
+  elemento("resultado-final").textContent = "";
 
-    document.getElementById("resposta-quiz").textContent = "";
+  elemento("proxima-pergunta").disabled = true;
 
-    document.getElementById("proxima-pergunta").disabled = true;
+  elemento("proxima-pergunta").hidden = false;
 
-    document.getElementById("proxima-pergunta").textContent =
-        perguntaAtual == perguntas.length - 1
-        ? "Ver resultado"
-        : "Próxima pergunta";
+  elemento("proxima-pergunta").textContent =
+    perguntaAtual === perguntas.length - 1
+      ? "Ver resultado"
+      : "Próxima pergunta";
 
-    var opcoes = document.getElementById("opcoes");
+  elemento("reiniciar-quiz").hidden = true;
 
-    opcoes.innerHTML = "";
+  const progresso =
+    (perguntaAtual / perguntas.length) * 100;
 
-    // CRIAR ALTERNATIVAS
+  elemento("progresso").style.width =
+    `${progresso}%`;
 
-    for (var i = 0; i < p.opcoes.length; i++) {
+  const opcoes = elemento("opcoes");
 
-        var botao = document.createElement("button");
+  opcoes.replaceChildren();
 
-        botao.type = "button";
-        botao.textContent = p.opcoes[i];
+  // CRIAR BOTÕES DAS ALTERNATIVAS
 
-        botao.onclick = function() {
+  atual.opcoes.forEach((opcao, indice) => {
 
-            var indice = Array.from(opcoes.children).indexOf(this);
+    const botao = document.createElement("button");
 
-            responderQuiz(indice);
+    botao.type = "button";
 
-        };
+    botao.className = "opcao";
 
-        opcoes.appendChild(botao);
-    }
+    botao.textContent = opcao;
+
+    botao.addEventListener("click", function() {
+      responderQuiz(indice);
+    });
+
+    opcoes.appendChild(botao);
+
+  });
+
 }
 
 // ========================================
-// RESPONDER PERGUNTA
+// RESPONDER QUIZ
 // ========================================
 
 function responderQuiz(indice) {
 
-    if (respondeu == true) {
-        return;
-    }
+  if (respondeu) {
+    return;
+  }
 
-    respondeu = true;
+  respondeu = true;
 
-    var p = perguntas[perguntaAtual];
+  const atual = perguntas[perguntaAtual];
 
-    var botoes = document.querySelectorAll("#opcoes button");
+  const botoes =
+    elemento("opcoes").querySelectorAll("button");
 
-    // ATUALIZAR CONTADOR
+  perguntasRespondidas++;
 
-    perguntasRespondidas++;
+  if (indice === atual.correta) {
 
-    document.getElementById("perguntas").textContent =
-        perguntasRespondidas;
+    pontos++;
 
-    // VERIFICAR RESPOSTA
+    acertos++;
 
-    if (indice == p.correta) {
+    elemento("resposta-quiz").textContent =
+      "✓ Correto! Você ganhou 1 ponto.";
 
-        pontos++;
+    botoes[indice].classList.add("correta");
 
-        acertos++;
+  } else {
 
-        document.getElementById("acertos").textContent =
-            acertos;
+    elemento("resposta-quiz").textContent =
+      `✕ Não foi dessa vez. A resposta correta é: ${atual.opcoes[atual.correta]}.`;
 
-        document.getElementById("resposta-quiz").textContent =
-            "✓ Correto! Você ganhou 1 ponto.";
+    botoes[indice].classList.add("incorreta");
 
-        botoes[indice].classList.add("correta");
+    botoes[atual.correta].classList.add("correta");
 
-    } else {
+  }
 
-        document.getElementById("resposta-quiz").textContent =
-            "✕ Resposta incorreta! A alternativa correta está destacada.";
+  // BLOQUEAR ALTERNATIVAS
 
-        botoes[indice].classList.add("incorreta");
+  botoes.forEach(function(botao) {
+    botao.disabled = true;
+  });
 
-        botoes[p.correta].classList.add("correta");
-    }
+  atualizarPainelQuiz();
 
-    // BLOQUEAR ALTERNATIVAS
+  const respondidas = perguntaAtual + 1;
 
-    for (var i = 0; i < botoes.length; i++) {
-        botoes[i].disabled = true;
-    }
+  elemento("progresso").style.width =
+    `${(respondidas / perguntas.length) * 100}%`;
 
-    document.getElementById("pontos").textContent =
-        pontos;
+  elemento("proxima-pergunta").disabled = false;
 
-    document.getElementById("progresso").style.width =
-        ((perguntaAtual + 1) / perguntas.length * 100) + "%";
-
-    document.getElementById("proxima-pergunta").disabled =
-        false;
 }
 
 // ========================================
@@ -342,20 +482,22 @@ function responderQuiz(indice) {
 
 function proximaPergunta() {
 
-    if (respondeu == false) {
-        return;
-    }
+  if (!respondeu) {
+    return;
+  }
 
-    if (perguntaAtual < perguntas.length - 1) {
+  if (perguntaAtual < perguntas.length - 1) {
 
-        perguntaAtual++;
+    perguntaAtual++;
 
-        mostrarPergunta();
+    mostrarPergunta();
 
-    } else {
+  } else {
 
-        finalizarQuiz();
-    }
+    finalizarQuiz();
+
+  }
+
 }
 
 // ========================================
@@ -364,44 +506,49 @@ function proximaPergunta() {
 
 function finalizarQuiz() {
 
-    document.getElementById("numero-pergunta").textContent =
-        "QUIZ CONCLUÍDO";
+  elemento("numero-pergunta").textContent =
+    "QUIZ CONCLUÍDO";
 
-    document.getElementById("pergunta").textContent =
-        "Seu resultado final:";
+  elemento("pergunta").textContent =
+    "Seu resultado final:";
 
-    document.getElementById("opcoes").innerHTML = "";
+  elemento("opcoes").replaceChildren();
 
-    document.getElementById("resposta-quiz").textContent = "";
+  elemento("resposta-quiz").textContent = "";
 
-    document.getElementById("progresso").style.width = "100%";
+  elemento("progresso").style.width = "100%";
 
-    document.getElementById("proxima-pergunta").style.display =
-        "none";
+  elemento("proxima-pergunta").hidden = true;
 
-    var mensagem = "";
+  let mensagem = "";
 
-    if (pontos >= 20) {
+  if (pontos >= 20) {
 
-        mensagem = "Excelente! Você entende muito de segurança digital!";
+    mensagem =
+      "Excelente! Você entende muito de segurança digital!";
 
-    } else if (pontos >= 15) {
+  } else if (pontos >= 15) {
 
-        mensagem = "Muito bem! Você tem bons conhecimentos!";
+    mensagem =
+      "Muito bem! Você tem bons conhecimentos!";
 
-    } else if (pontos >= 10) {
+  } else if (pontos >= 10) {
 
-        mensagem = "Bom trabalho! Continue aprendendo!";
+    mensagem =
+      "Bom trabalho! Continue aprendendo!";
 
-    } else {
+  } else {
 
-        mensagem = "Continue estudando! Você pode melhorar!";
-    }
+    mensagem =
+      "Continue estudando! Você pode melhorar!";
 
-    document.getElementById("resultado-final").textContent =
-        pontos + "/25 pontos — " + mensagem;
+  }
 
-    document.getElementById("reiniciar-quiz").hidden = false;
+  elemento("resultado-final").textContent =
+    `${pontos}/25 pontos — ${mensagem}`;
+
+  elemento("reiniciar-quiz").hidden = false;
+
 }
 
 // ========================================
@@ -410,18 +557,18 @@ function finalizarQuiz() {
 
 function reiniciarQuiz() {
 
-    perguntaAtual = 0;
+  perguntaAtual = 0;
 
-    pontos = 0;
+  pontos = 0;
 
-    document.getElementById("resultado-final").textContent = "";
+  perguntasRespondidas = 0;
 
-    document.getElementById("proxima-pergunta").style.display =
-        "block";
+  acertos = 0;
 
-    document.getElementById("reiniciar-quiz").hidden = true;
+  atualizarPainelQuiz();
 
-    mostrarPergunta();
+  mostrarPergunta();
+
 }
 
 // ========================================
@@ -430,65 +577,144 @@ function reiniciarQuiz() {
 
 function registrarRisco() {
 
-    var tipo = document.getElementById("tipoRisco").value;
+  const tipo =
+    elemento("tipoRisco").value;
 
-    var descricao = document.getElementById("descricao").value.trim();
+  const descricao =
+    elemento("descricao").value.trim();
 
-    var lista = document.getElementById("lista");
+  const aviso =
+    elemento("aviso-risco");
 
-    if (tipo == "" || descricao == "") {
+  if (tipo === "" || descricao === "") {
 
-        alert("Preencha o tipo de risco e a descrição.");
+    aviso.textContent =
+      "Preencha o tipo de risco e a descrição.";
 
-        return;
+    aviso.className = "aviso erro";
+
+    return;
+  }
+
+  const lista = elemento("lista");
+
+  // REMOVER MENSAGEM INICIAL
+
+  const vazio = lista.querySelector(".vazio");
+
+  if (vazio) {
+    vazio.remove();
+  }
+
+  // CRIAR NOVO REGISTRO
+
+  const item = document.createElement("li");
+
+  const tipoTexto = document.createElement("strong");
+
+  tipoTexto.className = "risco-tipo";
+
+  tipoTexto.textContent = tipo;
+
+  const descricaoTexto = document.createElement("p");
+
+  descricaoTexto.className = "risco-descricao";
+
+  descricaoTexto.textContent = descricao;
+
+  // BOTÃO DE EXCLUIR
+
+  const remover = document.createElement("button");
+
+  remover.type = "button";
+
+  remover.className = "botao-remover";
+
+  remover.textContent = "Excluir registro";
+
+  remover.addEventListener("click", function() {
+
+    item.remove();
+
+    atualizarTotalRiscos();
+
+    if (lista.children.length === 0) {
+
+      const mensagem = document.createElement("li");
+
+      mensagem.className = "vazio";
+
+      mensagem.textContent =
+        "Nenhum risco registrado ainda.";
+
+      lista.appendChild(mensagem);
+
     }
 
-    // REMOVER MENSAGEM INICIAL
+  });
 
-    var itemVazio = document.querySelector(".vazio");
+  item.append(
+    tipoTexto,
+    descricaoTexto,
+    remover
+  );
 
-    if (itemVazio) {
-        itemVazio.remove();
-    }
+  lista.appendChild(item);
 
-    // CRIAR NOVO ITEM
+  // LIMPAR CAMPOS
 
-    var novoRisco = document.createElement("li");
+  elemento("tipoRisco").value = "";
 
-    var tipoRisco = document.createElement("div");
+  elemento("descricao").value = "";
 
-    tipoRisco.className = "risco-tipo";
+  aviso.textContent =
+    "Risco registrado com sucesso!";
 
-    tipoRisco.textContent = tipo;
+  aviso.className = "aviso sucesso";
 
-    var descricaoRisco = document.createElement("div");
-
-    descricaoRisco.className = "risco-descricao";
-
-    descricaoRisco.textContent = descricao;
-
-    novoRisco.appendChild(tipoRisco);
-
-    novoRisco.appendChild(descricaoRisco);
-
-    lista.appendChild(novoRisco);
-
-    // ATUALIZAR CONTADOR
-
-    var total = lista.querySelectorAll("li:not(.vazio)").length;
-
-    document.getElementById("total-riscos").textContent = total;
-
-    // LIMPAR CAMPOS
-
-    document.getElementById("tipoRisco").value = "";
-
-    document.getElementById("descricao").value = "";
+  atualizarTotalRiscos();
 
 }
 
 // ========================================
-// INICIAR O QUIZ
+// ATUALIZAR TOTAL DE RISCOS
 // ========================================
 
-mostrarPergunta();
+function atualizarTotalRiscos() {
+
+  const total =
+    elemento("lista").querySelectorAll("li:not(.vazio)").length;
+
+  elemento("total-riscos").textContent = total;
+
+}
+
+// ========================================
+// INICIAR E CONECTAR OS BOTÕES
+// ========================================
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  elemento("btn-consultar").addEventListener(
+    "click",
+    consultarSituacao
+  );
+
+  elemento("proxima-pergunta").addEventListener(
+    "click",
+    proximaPergunta
+  );
+
+  elemento("reiniciar-quiz").addEventListener(
+    "click",
+    reiniciarQuiz
+  );
+
+  elemento("btn-registrar").addEventListener(
+    "click",
+    registrarRisco
+  );
+
+  mostrarPergunta();
+
+});
