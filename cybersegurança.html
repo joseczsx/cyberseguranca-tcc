@@ -1,320 +1,262 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2457d6">
-    <title>Observatório de Segurança Digital</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2457d6">
+  <title>Observatório de Segurança Digital</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
 
-    <!-- CABEÇALHO -->
-    <header id="topo">
-
-        <div class="logo">
-            <span>🔐</span>
-            <div>
-                <h1>Observatório</h1>
-                <p>Segurança Digital</p>
-            </div>
-        </div>
-
-        <nav class="menu">
-            <a href="#inicio">Início</a>
-            <a href="#consultar">Consultar</a>
-            <a href="#teste">Quiz</a>
-            <a href="#painel">Painel</a>
-            <a href="#riscos">Registrar risco</a>
-        </nav>
-
-    </header>
-
-    <main>
-
-        <!-- INÍCIO -->
-        <section class="inicio" id="inicio">
-
-            <div class="inicio-texto">
-
-                <span class="tag">EDUCAÇÃO DIGITAL</span>
-
-                <h2>
-                    Antes de clicar,
-                    <strong>pense duas vezes.</strong>
-                </h2>
-
-                <p>
-                    Aprenda a reconhecer golpes, links suspeitos,
-                    phishing e outras ameaças comuns na internet.
-                </p>
-
-                <a href="#consultar" class="botao">
-                    Consultar uma situação
-                </a>
-
-            </div>
-
-            <div class="inicio-card">
-
-                <span>🚨</span>
-
-                <h3>Fique atento!</h3>
-
-                <p>
-                    Nem tudo que chega pela internet é confiável.
-                    Verifique antes de clicar ou compartilhar.
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- CONSULTAR SITUAÇÃO -->
-        <section class="secao" id="consultar">
-
-            <div class="titulo">
-                <span>01</span>
-
-                <div>
-                    <h2>Consultar uma situação</h2>
-                    <p>Escolha uma situação para descobrir como agir.</p>
-                </div>
-            </div>
-
-            <div class="consulta">
-
-                <div class="formulario">
-
-                    <label for="situacao">
-                        Qual situação você encontrou?
-                    </label>
-
-                    <select id="situacao">
-                        <option value="">Selecione uma opção</option>
-                        <option value="link">Link recebido por mensagem</option>
-                        <option value="email">E-mail desconhecido</option>
-                        <option value="senha">Pedido de senha</option>
-                        <option value="promocao">Promoção muito vantajosa</option>
-                        <option value="perfil">Perfil desconhecido</option>
-                        <option value="arquivo">Arquivo recebido</option>
-                    </select>
-
-                    <button type="button" onclick="consultarSituacao()">
-                        Ver orientação
-                    </button>
-
-                </div>
-
-                <div class="resultado" id="resultado">
-
-                    <span>💡</span>
-
-                    <h3>Orientação</h3>
-
-                    <p>
-                        Selecione uma situação para receber uma dica.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- QUIZ -->
-        <section class="secao" id="teste">
-
-            <div class="titulo">
-                <span>02</span>
-
-                <div>
-                    <h2>Quiz de Segurança Digital</h2>
-                    <p>Responda às 25 perguntas e teste seus conhecimentos.</p>
-                </div>
-            </div>
-
-            <div class="quiz">
-
-                <div class="quiz-info">
-
-                    <span id="numero-pergunta">Pergunta 1/25</span>
-
-                    <span>
-                        ⭐ Pontos:
-                        <strong id="pontos">0</strong>
-                    </span>
-
-                </div>
-
-                <div class="barra-progresso">
-                    <div id="progresso"></div>
-                </div>
-
-                <h3 id="pergunta"></h3>
-
-                <div class="opcoes" id="opcoes"></div>
-
-                <p id="resposta-quiz" aria-live="polite"></p>
-
-                <button
-                    type="button"
-                    id="proxima-pergunta"
-                    onclick="proximaPergunta()"
-                    disabled>
-                    Próxima pergunta
-                </button>
-
-                <div id="resultado-final" aria-live="polite"></div>
-
-                <button
-                    type="button"
-                    id="reiniciar-quiz"
-                    onclick="reiniciarQuiz()"
-                    hidden>
-                    Refazer quiz
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- PAINEL -->
-        <section class="secao" id="painel">
-
-            <div class="titulo">
-                <span>03</span>
-
-                <div>
-                    <h2>Painel de segurança</h2>
-                    <p>Acompanhe sua participação no observatório.</p>
-                </div>
-            </div>
-
-            <div class="indicadores">
-
-                <div class="indicador">
-                    <span>🟡</span>
-                    <div>
-                        <small>Nível de atenção</small>
-                        <strong>Médio</strong>
-                    </div>
-                </div>
-
-                <div class="indicador">
-                    <span>💡</span>
-                    <div>
-                        <small>Dicas consultadas</small>
-                        <strong id="dicas">0</strong>
-                    </div>
-                </div>
-
-                <div class="indicador">
-                    <span>🧠</span>
-                    <div>
-                        <small>Perguntas respondidas</small>
-                        <strong id="perguntas">0</strong>
-                    </div>
-                </div>
-
-                <div class="indicador">
-                    <span>✅</span>
-                    <div>
-                        <small>Acertos</small>
-                        <strong id="acertos">0</strong>
-                    </div>
-                </div>
-
-                <div class="indicador">
-                    <span>🚨</span>
-                    <div>
-                        <small>Riscos registrados</small>
-                        <strong id="total-riscos">0</strong>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- REGISTRAR RISCO -->
-        <section class="secao" id="riscos">
-
-            <div class="titulo">
-                <span>04</span>
-
-                <div>
-                    <h2>Registrar um risco</h2>
-                    <p>Encontrou algo suspeito? Registre a situação.</p>
-                </div>
-            </div>
-
-            <div class="registro">
-
-                <div class="formulario">
-
-                    <label for="tipoRisco">Tipo de risco</label>
-
-                    <select id="tipoRisco">
-
-                        <option value="">Selecione</option>
-                        <option>Phishing</option>
-                        <option>Fake news</option>
-                        <option>Golpe</option>
-                        <option>Perfil falso</option>
-                        <option>Link suspeito</option>
-                        <option>Cyberbullying</option>
-                        <option>Roubo de conta</option>
-
-                    </select>
-
-                    <label for="descricao">
-                        O que aconteceu?
-                    </label>
-
-                    <textarea
-                        id="descricao"
-                        placeholder="Descreva brevemente a situação...">
-                    </textarea>
-
-                    <button type="button" onclick="registrarRisco()">
-                        Registrar risco
-                    </button>
-
-                </div>
-
-                <div class="lista-riscos">
-
-                    <h3>Riscos registrados</h3>
-
-                    <ul id="lista">
-                        <li class="vazio">
-                            Nenhum risco registrado ainda.
-                        </li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- RODAPÉ -->
-    <footer id="rodape">
-
-        <p>Observatório de Segurança Digital</p>
-
-        <span>
-            Projeto educativo sobre segurança na internet
-        </span>
-
-    </footer>
-
-    <script src="script.js"></script>
+<header id="topo">
+  <a class="logo" href="#inicio">
+    <span>🔐</span>
+    <span>
+      <strong>Observatório</strong>
+      <small>Segurança Digital</small>
+    </span>
+  </a>
+
+  <nav class="menu">
+    <a href="#inicio">Início</a>
+    <a href="#consultar">Consultar</a>
+    <a href="#teste">Quiz</a>
+    <a href="#painel">Painel</a>
+    <a href="#riscos">Registrar risco</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- INÍCIO -->
+  <section class="inicio" id="inicio">
+    <div class="inicio-texto">
+      <span class="tag">EDUCAÇÃO DIGITAL</span>
+
+      <h1>
+        Antes de clicar,<br>
+        <strong>pense duas vezes.</strong>
+      </h1>
+
+      <p>
+        Aprenda a reconhecer golpes, links suspeitos,
+        phishing e outras ameaças comuns na internet.
+      </p>
+
+      <a href="#consultar" class="botao-link">
+        Consultar uma situação
+      </a>
+    </div>
+
+    <div class="inicio-card">
+      <span>🚨</span>
+      <h2>Fique atento!</h2>
+      <p>
+        Nem tudo que chega pela internet é confiável.
+        Verifique antes de clicar ou compartilhar.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONSULTAR -->
+  <section class="secao" id="consultar">
+
+    <div class="titulo">
+      <span>01</span>
+      <div>
+        <h2>Consultar uma situação</h2>
+        <p>Escolha uma situação para descobrir como agir.</p>
+      </div>
+    </div>
+
+    <div class="duas-colunas">
+
+      <div class="cartao formulario">
+        <label for="situacao">
+          Qual situação você encontrou?
+        </label>
+
+        <select id="situacao">
+          <option value="">Selecione uma opção</option>
+          <option value="link">Link recebido por mensagem</option>
+          <option value="email">E-mail desconhecido</option>
+          <option value="senha">Pedido de senha</option>
+          <option value="promocao">Promoção muito vantajosa</option>
+          <option value="perfil">Perfil desconhecido</option>
+          <option value="arquivo">Arquivo recebido</option>
+        </select>
+
+        <button type="button" id="btn-consultar">
+          Ver orientação
+        </button>
+      </div>
+
+      <div class="cartao resultado" id="resultado">
+        <span>💡</span>
+        <h3>Orientação</h3>
+        <p id="texto-resultado">
+          Selecione uma situação para receber uma dica.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="secao" id="teste">
+
+    <div class="titulo">
+      <span>02</span>
+      <div>
+        <h2>Quiz de Segurança Digital</h2>
+        <p>Responda às 25 perguntas e teste seus conhecimentos.</p>
+      </div>
+    </div>
+
+    <div class="quiz cartao">
+
+      <div class="quiz-info">
+        <span id="numero-pergunta">Pergunta 1/25</span>
+        <span>⭐ Pontos: <strong id="pontos">0</strong></span>
+      </div>
+
+      <div class="barra-progresso">
+        <div id="progresso"></div>
+      </div>
+
+      <h3 id="pergunta">Carregando pergunta...</h3>
+
+      <div class="opcoes" id="opcoes"></div>
+
+      <p id="resposta-quiz" aria-live="polite"></p>
+
+      <button type="button" id="proxima-pergunta" disabled>
+        Próxima pergunta
+      </button>
+
+      <div id="resultado-final"></div>
+
+      <button type="button" id="reiniciar-quiz" hidden>
+        Refazer quiz
+      </button>
+
+    </div>
+  </section>
+
+  <!-- PAINEL -->
+  <section class="secao" id="painel">
+
+    <div class="titulo">
+      <span>03</span>
+      <div>
+        <h2>Painel de segurança</h2>
+        <p>Acompanhe sua participação no observatório.</p>
+      </div>
+    </div>
+
+    <div class="indicadores">
+
+      <div class="indicador">
+        <span>🟡</span>
+        <small>Nível de atenção</small>
+        <strong>Médio</strong>
+      </div>
+
+      <div class="indicador">
+        <span>💡</span>
+        <small>Dicas consultadas</small>
+        <strong id="dicas">0</strong>
+      </div>
+
+      <div class="indicador">
+        <span>🧠</span>
+        <small>Perguntas respondidas</small>
+        <strong id="perguntas">0</strong>
+      </div>
+
+      <div class="indicador">
+        <span>✅</span>
+        <small>Acertos</small>
+        <strong id="acertos">0</strong>
+      </div>
+
+      <div class="indicador">
+        <span>🚨</span>
+        <small>Riscos registrados</small>
+        <strong id="total-riscos">0</strong>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REGISTRAR RISCO -->
+  <section class="secao" id="riscos">
+
+    <div class="titulo">
+      <span>04</span>
+      <div>
+        <h2>Registrar um risco</h2>
+        <p>Encontrou algo suspeito? Registre a situação.</p>
+      </div>
+    </div>
+
+    <div class="duas-colunas">
+
+      <div class="cartao formulario">
+
+        <label for="tipoRisco">Tipo de risco</label>
+
+        <select id="tipoRisco">
+          <option value="">Selecione</option>
+          <option>Phishing</option>
+          <option>Fake news</option>
+          <option>Golpe</option>
+          <option>Perfil falso</option>
+          <option>Link suspeito</option>
+          <option>Cyberbullying</option>
+          <option>Roubo de conta</option>
+        </select>
+
+        <label for="descricao">
+          O que aconteceu?
+        </label>
+
+        <textarea
+          id="descricao"
+          rows="4"
+          maxlength="500"
+          placeholder="Descreva brevemente a situação...">
+        </textarea>
+
+        <button type="button" id="btn-registrar">
+          Registrar risco
+        </button>
+
+        <p class="aviso" id="aviso-risco"></p>
+
+      </div>
+
+      <div class="cartao lista-riscos">
+        <h3>Riscos registrados</h3>
+
+        <ul id="lista">
+          <li class="vazio">
+            Nenhum risco registrado ainda.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer id="rodape">
+  <strong>Observatório de Segurança Digital</strong>
+  <span>Projeto educativo sobre segurança na internet</span>
+</footer>
 
 </body>
 </html>
