@@ -1,14 +1,15 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Observatorio de Seguranca Digital</title>
+    <title>Observatório de Segurança Digital</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- CABECALHO DO SITE -->
+    <!-- CABEÇALHO DO SITE -->
     <div id="topo">
         <div class="logo">
             <span>🔐</span>
@@ -18,7 +19,7 @@
             </div>
         </div>
 
-        <!MENU>
+        <!-- MENU -->
         <div class="menu">
             <a href="#inicio">Início</a>
             <a href="#consultar">Consultar</a>
@@ -29,7 +30,7 @@
 
     <div class="main">
 
-        <!-- PARTE DO INICIO -->
+        <!-- INÍCIO -->
         <div class="inicio" id="inicio">
             <div class="inicio-texto">
                 <span class="tag">EDUCAÇÃO DIGITAL</span>
@@ -45,7 +46,7 @@
             </div>
         </div>
 
-        <!-- SECAO 1: CONSULTAR SITUACAO -->
+        <!-- CONSULTAR SITUAÇÃO -->
         <div class="secao" id="consultar">
             <div class="titulo">
                 <span>01</span>
@@ -57,7 +58,8 @@
 
             <div class="consulta">
                 <div class="formulario">
-                    <label>Qual situação você encontrou?</label><br>
+                    <label>Qual situação você encontrou?</label>
+
                     <select id="situacao">
                         <option value="">Selecione uma opção</option>
                         <option value="link">Link recebido por mensagem</option>
@@ -67,7 +69,7 @@
                         <option value="perfil">Perfil desconhecido</option>
                         <option value="arquivo">Arquivo recebido</option>
                     </select>
-                    <br><br>
+
                     <button onclick="consultarSituacao()">Ver orientação</button>
                 </div>
 
@@ -79,7 +81,7 @@
             </div>
         </div>
 
-        <!-- TESTE RAPIDO -->
+        <!-- TESTE RÁPIDO -->
         <div class="secao" id="teste">
             <div class="titulo">
                 <span>02</span>
@@ -162,6 +164,7 @@
             <div class="registro">
                 <div class="formulario">
                     <label>Tipo de risco</label>
+
                     <select id="tipoRisco">
                         <option value="">Selecione</option>
                         <option>Phishing</option>
@@ -173,11 +176,10 @@
                         <option>Roubo de conta</option>
                     </select>
 
-                    <br>
                     <label>O que aconteceu?</label>
+
                     <textarea id="descricao" placeholder="Descreva brevemente a situação..."></textarea>
 
-                    <br>
                     <button onclick="registrarRisco()">Registrar risco</button>
                 </div>
 
@@ -192,12 +194,12 @@
 
     </div>
 
-    <!-- RODAPE -->
+    <!-- RODAPÉ -->
     <div id="rodape">
         <p>Observatório de Segurança Digital</p>
         <span>Projeto educativo sobre segurança na internet</span>
     </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
