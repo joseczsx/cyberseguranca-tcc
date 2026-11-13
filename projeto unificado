@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2457d6">
+  <title>Observatório de Segurança Digital</title>
+
+  <style>
+    /* CONFIGURAÇÕES GERAIS */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 18px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #202936;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    button, select, textarea {
+      font: inherit;
+    }
+
+    button, a, select {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      touch-action: manipulation;
+    }
+
+    /* CABEÇALHO */
+
+    #topo {
+      background: white;
+      border-bottom: 1px solid #e2e6eb;
+      padding: 16px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: inherit;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo > span:first-child {
+      font-size: 30px;
+    }
+
+    .logo strong {
+      display: block;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .logo small {
+      display: block;
+      color: #687386;
+      font-size: 13px;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+    }
+
+    .menu a {
+      color: #4d5868;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .menu a:hover {
+      color: #2457d6;
+    }
+
+    /* INÍCIO */
+
+    .inicio {
+      min-height: 390px;
+      padding: 64px 10%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 36px;
+    }
+
+    .inicio-texto {
+      flex: 1 1 60%;
+      min-width: 0;
+    }
+
+    .tag {
+      color: #2457d6;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .inicio h1 {
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1.15;
+      margin: 14px 0;
+    }
+
+    .inicio h1 strong {
+      color: #2457d6;
+    }
+
+    .inicio-texto p {
+      color: #5e6877;
+      margin-bottom: 24px;
+      max-width: 520px;
+    }
+
+    .botao-link {
+      display: inline-block;
+      background: #2457d6;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .botao-link:hover {
+      background: #1945b5;
+    }
+
+    .inicio-card {
+      flex: 0 1 300px;
+      background: #f0f4ff;
+      border: 1px solid #dce5ff;
+      padding: 26px;
+      border-radius: 12px;
+    }
+
+    .inicio-card > span {
+      font-size: 34px;
+    }
+
+    .inicio-card h2 {
+      font-size: 20px;
+      margin: 8px 0;
+    }
+
+    .inicio-card p {
+      color: #5e6877;
+      font-size: 14px;
+    }
+
+    /* SEÇÕES */
+
+    .secao {
+      padding: 55px 10%;
+    }
+
+    .titulo {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .titulo > span {
+      color: #2457d6;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .titulo h2 {
+      font-size: 26px;
+      line-height: 1.25;
+    }
+
+    .titulo p {
+      color: #707b8b;
+      font-size: 14px;
+    }
+
+    /* CARTÕES */
+
+    .duas-colunas {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .cartao,
+    .indicador {
+      background: white;
+      border: 1px solid #e0e4e9;
+      border-radius: 10px;
+      padding: 22px;
+      min-width: 0;
+    }
+
+    /* FORMULÁRIOS */
+
+    .formulario label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 0 6px;
+    }
+
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 46px;
+      margin: 0 0 15px;
+      border: 1px solid #cfd5dd;
+      border-radius: 7px;
+      padding: 11px 12px;
+      background: white;
+      color: #202936;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    select:focus,
+    textarea:focus,
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #9bb8ff;
+      outline-offset: 2px;
+    }
+
+    button {
+      width: 100%;
+      min-height: 46px;
+      border: none;
+      border-radius: 7px;
+      padding: 11px 14px;
+      background: #2457d6;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+
+    button:hover:not(:disabled) {
+      background: #1945b5;
+    }
+
+    button:active:not(:disabled) {
+      transform: scale(.99);
+    }
+
+    button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    /* RESULTADO DA CONSULTA */
+
+    .resultado {
+      background: #f9fafc;
+    }
+
+    .resultado > span {
+      font-size: 30px;
+    }
+
+    .resultado h3 {
+      margin: 7px 0;
+    }
+
+    .resultado p {
+      color: #657080;
+      overflow-wrap: anywhere;
+    }
+
+    /* QUIZ */
+
+    .quiz {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .quiz-info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: #2457d6;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .barra-progresso {
+      height: 9px;
+      width: 100%;
+      margin: 15px 0 20px;
+      border-radius: 20px;
+      background: #e5eaf2;
+      overflow: hidden;
+    }
+
+    #progresso {
+      width: 0;
+      height: 100%;
+      background: #2457d6;
+      border-radius: inherit;
+      transition: width .25s;
+    }
+
+    .quiz h3 {
+      font-size: 19px;
+      margin-bottom: 16px;
+    }
+
+    .opcoes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .opcoes button {
+      min-height: 50px;
+      background: #f1f3f6;
+      color: #303947;
+      text-align: left;
+      border: 2px solid transparent;
+      overflow-wrap: anywhere;
+    }
+
+    .opcoes button:hover:not(:disabled) {
+      background: #e5edff;
+      border-color: #2457d6;
+    }
+
+    .opcoes button.correta {
+      background: #d9f7e5;
+      border-color: #239b56;
+      color: #176b39;
+    }
+
+    .opcoes button.incorreta {
+      background: #ffe2e2;
+      border-color: #d64545;
+      color: #a32222;
+    }
+
+    #resposta-quiz {
+      min-height: 24px;
+      margin: 14px 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    #proxima-pergunta {
+      margin-top: 4px;
+    }
+
+    #resultado-final {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* PAINEL */
+
+    .indicadores {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .indicador > span {
+      display: block;
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .indicador small {
+      display: block;
+      color: #707b8b;
+      font-size: 12px;
+    }
+
+    .indicador strong {
+      display: block;
+      font-size: 21px;
+      overflow-wrap: anywhere;
+    }
+
+    /* LISTA DE RISCOS */
+
+    .lista-riscos h3 {
+      margin-bottom: 12px;
+    }
+
+    #lista {
+      list-style: none;
+      overflow-wrap: anywhere;
+    }
+
+    #lista li {
+      border-bottom: 1px solid #e5e8ec;
+      padding: 12px 0;
+    }
+
+    #lista li:last-child {
+      border-bottom: none;
+    }
+
+    .risco-tipo {
+      display: block;
+      color: #2457d6;
+    }
+
+    .risco-descricao {
+      color: #667181;
+      font-size: 14px;
+      margin: 4px 0 10px;
+      white-space: pre-wrap;
+    }
+
+    #lista .vazio {
+      color: #8a93a0;
+    }
+
+    #lista .botao-remover {
+      width: auto;
+      min-height: 36px;
+      padding: 7px 12px;
+      background: #a83232;
+      font-size: 13px;
+    }
+
+    #lista .botao-remover:hover {
+      background: #852424;
+    }
+
+    .aviso {
+      min-height: 22px;
+      margin-top: 9px;
+      font-size: 13px;
+    }
+
+    .aviso.erro {
+      color: #a32222;
+    }
+
+    .aviso.sucesso {
+      color: #176b39;
+    }
+
+    /* RODAPÉ */
+
+    #rodape {
+      background: #202936;
+      color: white;
+      padding: 25px 10%;
+      text-align: center;
+    }
+
+    #rodape strong,
+    #rodape span {
+      display: block;
+    }
+
+    #rodape span {
+      color: #aab2bd;
+      font-size: 13px;
+    }
+
+    /* TABLETS */
+
+    @media (max-width: 900px) {
+      #topo {
+        padding: 16px 5%;
+      }
+
+      .inicio {
+        padding: 50px 6%;
+      }
+
+      .secao {
+        padding: 45px 6%;
+      }
+
+      .indicadores {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* CELULARES */
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+
+      #topo {
+        padding: 14px 12px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .logo {
+        justify-content: center;
+      }
+
+      .menu {
+        justify-content: center;
+        gap: 8px 13px;
+      }
+
+      .menu a {
+        font-size: 13px;
+        padding: 4px 0;
+      }
+
+      .inicio {
+        min-height: auto;
+        padding: 36px 18px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 22px;
+      }
+
+      .inicio-card {
+        flex: auto;
+      }
+
+      .botao-link {
+        display: block;
+        text-align: center;
+      }
+
+      .secao {
+        padding: 36px 14px;
+      }
+
+      .titulo {
+        gap: 10px;
+      }
+
+      .titulo h2 {
+        font-size: 21px;
+      }
+
+      .titulo p {
+        font-size: 13px;
+      }
+
+      .duas-colunas {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .cartao {
+        padding: 17px;
+      }
+
+      .opcoes {
+        grid-template-columns: 1fr;
+      }
+
+      .opcoes button {
+        min-height: 48px;
+      }
+
+      .indicadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .indicador {
+        padding: 13px;
+      }
+
+      .indicador strong {
+        font-size: 18px;
+      }
+
+      #rodape {
+        padding: 24px 14px;
+      }
+    }
+
+    /* CELULARES PEQUENOS */
+
+    @media (max-width: 360px) {
+      .menu {
+        gap: 7px 9px;
+      }
+
+      .menu a {
+        font-size: 12px;
+      }
+
+      .indicadores {
+        grid-template-columns: 1fr;
+      }
+
+      .titulo h2 {
+        font-size: 19px;
+      }
+
+      .quiz-info {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header id="topo">
+  <a class="logo" href="#inicio">
+    <span>🔐</span>
+    <span>
+      <strong>Observatório</strong>
+      <small>Segurança Digital</small>
+    </span>
+  </a>
+
+  <nav class="menu">
+    <a href="#inicio">Início</a>
+    <a href="#consultar">Consultar</a>
+    <a href="#teste">Quiz</a>
+    <a href="#painel">Painel</a>
+    <a href="#riscos">Registrar risco</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- INÍCIO -->
+  <section class="inicio" id="inicio">
+    <div class="inicio-texto">
+      <span class="tag">EDUCAÇÃO DIGITAL</span>
+
+      <h1>
+        Antes de clicar,<br>
+        <strong>pense duas vezes.</strong>
+      </h1>
+
+      <p>
+        Aprenda a reconhecer golpes, links suspeitos,
+        phishing e outras ameaças comuns na internet.
+      </p>
+
+      <a href="#consultar" class="botao-link">
+        Consultar uma situação
+      </a>
+    </div>
+
+    <div class="inicio-card">
+      <span>🚨</span>
+      <h2>Fique atento!</h2>
+      <p>
+        Nem tudo que chega pela internet é confiável.
+        Verifique antes de clicar ou compartilhar.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONSULTAR -->
+  <section class="secao" id="consultar">
+
+    <div class="titulo">
+      <span>01</span>
+      <div>
+        <h2>Consultar uma situação</h2>
+        <p>Escolha uma situação para descobrir como agir.</p>
+      </div>
+    </div>
+
+    <div class="duas-colunas">
+
+      <div class="cartao formulario">
+        <label for="situacao">
+          Qual situação você encontrou?
+        </label>
+
+        <select id="situacao">
+          <option value="">Selecione uma opção</option>
+          <option value="link">Link recebido por mensagem</option>
+          <option value="email">E-mail desconhecido</option>
+          <option value="senha">Pedido de senha</option>
+          <option value="promocao">Promoção muito vantajosa</option>
+          <option value="perfil">Perfil desconhecido</option>
+          <option value="arquivo">Arquivo recebido</option>
+        </select>
+
+        <button type="button" id="btn-consultar">
+          Ver orientação
+        </button>
+      </div>
+
+      <div class="cartao resultado" id="resultado">
+        <span>💡</span>
+        <h3>Orientação</h3>
+        <p id="texto-resultado">
+          Selecione uma situação para receber uma dica.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="secao" id="teste">
+
+    <div class="titulo">
+      <span>02</span>
+      <div>
+        <h2>Quiz de Segurança Digital</h2>
+        <p>Responda às 25 perguntas e teste seus conhecimentos.</p>
+      </div>
+    </div>
+
+    <div class="quiz cartao">
+
+      <div class="quiz-info">
+        <span id="numero-pergunta">Pergunta 1/25</span>
+        <span>⭐ Pontos: <strong id="pontos">0</strong></span>
+      </div>
+
+      <div class="barra-progresso">
+        <div id="progresso"></div>
+      </div>
+
+      <h3 id="pergunta">Carregando pergunta...</h3>
+
+      <div class="opcoes" id="opcoes"></div>
+
+      <p id="resposta-quiz" aria-live="polite"></p>
+
+      <button type="button" id="proxima-pergunta" disabled>
+        Próxima pergunta
+      </button>
+
+      <div id="resultado-final"></div>
+
+      <button type="button" id="reiniciar-quiz" hidden>
+        Refazer quiz
+      </button>
+
+    </div>
+  </section>
+
+  <!-- PAINEL -->
+  <section class="secao" id="painel">
+
+    <div class="titulo">
+      <span>03</span>
+      <div>
+        <h2>Painel de segurança</h2>
+        <p>Acompanhe sua participação no observatório.</p>
+      </div>
+    </div>
+
+    <div class="indicadores">
+
+      <div class="indicador">
+        <span>🟡</span>
+        <small>Nível de atenção</small>
+        <strong>Médio</strong>
+      </div>
+
+      <div class="indicador">
+        <span>💡</span>
+        <small>Dicas consultadas</small>
+        <strong id="dicas">0</strong>
+      </div>
+
+      <div class="indicador">
+        <span>🧠</span>
+        <small>Perguntas respondidas</small>
+        <strong id="perguntas">0</strong>
+      </div>
+
+      <div class="indicador">
+        <span>✅</span>
+        <small>Acertos</small>
+        <strong id="acertos">0</strong>
+      </div>
+
+      <div class="indicador">
+        <span>🚨</span>
+        <small>Riscos registrados</small>
+        <strong id="total-riscos">0</strong>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REGISTRAR RISCO -->
+  <section class="secao" id="riscos">
+
+    <div class="titulo">
+      <span>04</span>
+      <div>
+        <h2>Registrar um risco</h2>
+        <p>Encontrou algo suspeito? Registre a situação.</p>
+      </div>
+    </div>
+
+    <div class="duas-colunas">
+
+      <div class="cartao formulario">
+
+        <label for="tipoRisco">Tipo de risco</label>
+
+        <select id="tipoRisco">
+          <option value="">Selecione</option>
+          <option>Phishing</option>
+          <option>Fake news</option>
+          <option>Golpe</option>
+          <option>Perfil falso</option>
+          <option>Link suspeito</option>
+          <option>Cyberbullying</option>
+          <option>Roubo de conta</option>
+        </select>
+
+        <label for="descricao">
+          O que aconteceu?
+        </label>
+
+        <textarea
+          id="descricao"
+          rows="4"
+          maxlength="500"
+          placeholder="Descreva brevemente a situação..."></textarea>
+
+        <button type="button" id="btn-registrar">
+          Registrar risco
+        </button>
+
+        <p class="aviso" id="aviso-risco"></p>
+
+      </div>
+
+      <div class="cartao lista-riscos">
+        <h3>Riscos registrados</h3>
+
+        <ul id="lista">
+          <li class="vazio">
+            Nenhum risco registrado ainda.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer id="rodape">
+  <strong>Observatório de Segurança Digital</strong>
+  <span>Projeto educativo sobre segurança na internet</span>
+</footer>
+
+<script>
+  "use strict";
+
+  // ========================================
+  // VARIÁVEIS DO PAINEL
+  // ========================================
+
+  let dicasConsultadas = 0;
+  let perguntasRespondidas = 0;
+  let acertos = 0;
+
+  // ========================================
+  // CONSULTAR SITUAÇÃO
+  // ========================================
+
+  const orientacoes = {
+    link: "Não clique imediatamente. Confira o endereço do site por outro caminho e confirme se o remetente é confiável.",
+
+    email: "Evite clicar em links ou baixar arquivos de e-mails desconhecidos. Confira cuidadosamente o endereço do remetente.",
+
+    senha: "Nunca informe sua senha por mensagem, e-mail ou telefone. Serviços confiáveis não pedem sua senha dessa maneira.",
+
+    promocao: "Desconfie de ofertas muito abaixo do preço normal. Pesquise a empresa e confira se a promoção aparece no site oficial.",
+
+    perfil: "Tenha cuidado com perfis desconhecidos. Verifique as informações e evite compartilhar dados pessoais.",
+
+    arquivo: "Não abra arquivos inesperados. Confirme com a pessoa que enviou e mantenha o aparelho atualizado."
+  };
+
+  function consultarSituacao() {
+
+    const situacao = document.getElementById("situacao").value;
+    const texto = document.getElementById("texto-resultado");
+
+    if (situacao === "") {
+      texto.textContent = "Selecione uma situação antes de pedir a orientação.";
+      return;
+    }
+
+    texto.textContent =
+      orientacoes[situacao] ||
+      "Não foi possível encontrar uma orientação para essa situação.";
+
+    dicasConsultadas++;
+
+    document.getElementById("dicas").textContent =
+      dicasConsultadas;
+  }
+
+  // ========================================
+  // PERGUNTAS DO QUIZ - 25 QUESTÕES
+  // ========================================
+
+  const perguntas = [
+
+    {
+      pergunta: "1. O que é phishing?",
+      opcoes: [
+        "Um jogo",
+        "Um golpe para roubar dados",
+        "Um aplicativo",
+        "Uma rede social"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "2. Como proteger sua senha?",
+      opcoes: [
+        "Compartilhar",
+        "Usar 123456",
+        "Criar uma senha forte e exclusiva",
+        "Publicar na internet"
+      ],
+      correta: 2
+    },
+
+    {
+      pergunta: "3. O que fazer com um link suspeito?",
+      opcoes: [
+        "Clicar",
+        "Compartilhar",
+        "Verificar a origem sem abrir",
+        "Informar sua senha"
+      ],
+      correta: 2
+    },
+
+    {
+      pergunta: "4. O que é uma fake news?",
+      opcoes: [
+        "Notícia falsa ou enganosa",
+        "Notícia oficial",
+        "Livro digital",
+        "Mensagem privada"
+      ],
+      correta: 0
+    },
+
+    {
+      pergunta: "5. O que o HTTPS indica?",
+      opcoes: [
+        "Que o site é sempre confiável",
+        "Que a conexão usa criptografia",
+        "Que o site não tem anúncios",
+        "Que não existem golpes"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "6. O que é um vírus digital?",
+      opcoes: [
+        "Um tipo de programa malicioso",
+        "Um navegador",
+        "Um site",
+        "Uma senha"
+      ],
+      correta: 0
+    },
+
+    {
+      pergunta: "7. O que fazer ao receber um e-mail desconhecido?",
+      opcoes: [
+        "Abrir todos os anexos",
+        "Verificar o remetente",
+        "Enviar sua senha",
+        "Clicar em todos os links"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "8. O que é autenticação em duas etapas?",
+      opcoes: [
+        "Duas contas",
+        "Uma proteção extra para confirmar o acesso",
+        "Duas senhas iguais",
+        "Um aplicativo de jogos"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "9. Qual destes é um dado pessoal?",
+      opcoes: [
+        "CPF",
+        "Nome de um planeta",
+        "Cor azul",
+        "Número aleatório sem relação com alguém"
+      ],
+      correta: 0
+    },
+
+    {
+      pergunta: "10. O que fazer com uma promoção suspeita?",
+      opcoes: [
+        "Comprar rapidamente",
+        "Enviar seus dados",
+        "Conferir no site oficial da loja",
+        "Compartilhar sem verificar"
+      ],
+      correta: 2
+    },
+
+    {
+      pergunta: "11. O que é cyberbullying?",
+      opcoes: [
+        "Jogo online",
+        "Intimidação ou agressão no ambiente digital",
+        "Pesquisa escolar",
+        "Aplicativo"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "12. Por que atualizar aplicativos?",
+      opcoes: [
+        "Para ocupar espaço",
+        "Para corrigir falhas e melhorar a segurança",
+        "Para apagar contas",
+        "Para perder dados"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "13. O que é uma senha forte?",
+      opcoes: [
+        "123456",
+        "Data de nascimento",
+        "Combinação longa e difícil de adivinhar",
+        "Nome próprio"
+      ],
+      correta: 2
+    },
+
+    {
+      pergunta: "14. O que fazer em computadores públicos?",
+      opcoes: [
+        "Salvar suas senhas",
+        "Deixar a conta aberta",
+        "Sair da conta ao terminar",
+        "Compartilhar seus dados"
+      ],
+      correta: 2
+    },
+
+    {
+      pergunta: "15. O que é malware?",
+      opcoes: [
+        "Programa malicioso",
+        "Rede social",
+        "Site educativo",
+        "Jogo"
+      ],
+      correta: 0
+    },
+
+    {
+      pergunta: "16. Como identificar uma notícia falsa?",
+      opcoes: [
+        "Acreditar apenas no título",
+        "Verificar fontes e outras publicações confiáveis",
+        "Compartilhar imediatamente",
+        "Ignorar a fonte"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "17. O que é roubo de identidade digital?",
+      opcoes: [
+        "Criar um perfil próprio",
+        "Usar dados de outra pessoa sem autorização",
+        "Trocar uma senha",
+        "Baixar um aplicativo"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "18. O que fazer ao perder acesso à conta?",
+      opcoes: [
+        "Ignorar o problema",
+        "Usar a recuperação oficial da plataforma",
+        "Divulgar a senha",
+        "Publicar seus dados"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "19. Qual é o risco de baixar arquivos desconhecidos?",
+      opcoes: [
+        "Melhorar a internet",
+        "Baixar conteúdo malicioso",
+        "Aumentar a bateria",
+        "Proteger automaticamente a conta"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "20. O que é privacidade digital?",
+      opcoes: [
+        "Proteção e controle das informações pessoais",
+        "Compartilhar tudo",
+        "Publicar senhas",
+        "Usar qualquer site sem cuidado"
+      ],
+      correta: 0
+    },
+
+    {
+      pergunta: "21. O que fazer com um perfil falso?",
+      opcoes: [
+        "Enviar dados pessoais",
+        "Denunciar e bloquear na plataforma",
+        "Compartilhar informações",
+        "Confiar imediatamente"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "22. Para que serve um antivírus?",
+      opcoes: [
+        "Criar sites",
+        "Ajudar a detectar e bloquear ameaças",
+        "Aumentar seguidores",
+        "Criar senhas"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "23. O que é engenharia social?",
+      opcoes: [
+        "Construção de prédios",
+        "Manipulação de pessoas para obter informações",
+        "Criação de jogos",
+        "Programação de sites"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "24. Para que serve o backup?",
+      opcoes: [
+        "Apagar arquivos",
+        "Criar cópias de segurança",
+        "Compartilhar senhas",
+        "Excluir aplicativos"
+      ],
+      correta: 1
+    },
+
+    {
+      pergunta: "25. Qual é uma boa atitude na internet?",
+      opcoes: [
+        "Confiar em tudo",
+        "Compartilhar dados pessoais",
+        "Pensar e verificar antes de clicar",
+        "Usar a mesma senha em todos os sites"
+      ],
+      correta: 2
+    }
+
+  ];
+
+  // ========================================
+  // VARIÁVEIS DO QUIZ
+  // ========================================
+
+  let perguntaAtual = 0;
+  let pontos = 0;
+  let respondeu = false;
+
+  const elemento = (id) => document.getElementById(id);
+
+  // ========================================
+  // ATUALIZAR PAINEL
+  // ========================================
+
+  function atualizarPainelQuiz() {
+
+    elemento("perguntas").textContent =
+      perguntasRespondidas;
+
+    elemento("acertos").textContent =
+      acertos;
+
+    elemento("pontos").textContent =
+      pontos;
+  }
+
+  // ========================================
+  // MOSTRAR PERGUNTA
+  // ========================================
+
+  function mostrarPergunta() {
+
+    respondeu = false;
+
+    const atual = perguntas[perguntaAtual];
+
+    elemento("numero-pergunta").textContent =
+      `Pergunta ${perguntaAtual + 1}/${perguntas.length}`;
+
+    elemento("pergunta").textContent =
+      atual.pergunta;
+
+    elemento("resposta-quiz").textContent = "";
+
+    elemento("resultado-final").textContent = "";
+
+    elemento("proxima-pergunta").disabled = true;
+
+    elemento("proxima-pergunta").hidden = false;
+
+    elemento("proxima-pergunta").textContent =
+      perguntaAtual === perguntas.length - 1
+        ? "Ver resultado"
+        : "Próxima pergunta";
+
+    elemento("reiniciar-quiz").hidden = true;
+
+    const progresso =
+      (perguntaAtual / perguntas.length) * 100;
+
+    elemento("progresso").style.width =
+      `${progresso}%`;
+
+    const opcoes = elemento("opcoes");
+
+    opcoes.replaceChildren();
+
+    // CRIAR BOTÕES DAS ALTERNATIVAS
+
+    atual.opcoes.forEach((opcao, indice) => {
+
+      const botao = document.createElement("button");
+
+      botao.type = "button";
+
+      botao.className = "opcao";
+
+      botao.textContent = opcao;
+
+      botao.addEventListener("click", function() {
+        responderQuiz(indice);
+      });
+
+      opcoes.appendChild(botao);
+
+    });
+
+  }
+
+  // ========================================
+  // RESPONDER QUIZ
+  // ========================================
+
+  function responderQuiz(indice) {
+
+    if (respondeu) {
+      return;
+    }
+
+    respondeu = true;
+
+    const atual = perguntas[perguntaAtual];
+
+    const botoes =
+      elemento("opcoes").querySelectorAll("button");
+
+    perguntasRespondidas++;
+
+    if (indice === atual.correta) {
+
+      pontos++;
+
+      acertos++;
+
+      elemento("resposta-quiz").textContent =
+        "✓ Correto! Você ganhou 1 ponto.";
+
+      botoes[indice].classList.add("correta");
+
+    } else {
+
+      elemento("resposta-quiz").textContent =
+        `✕ Não foi dessa vez. A resposta correta é: ${atual.opcoes[atual.correta]}.`;
+
+      botoes[indice].classList.add("incorreta");
+
+      botoes[atual.correta].classList.add("correta");
+
+    }
+
+    // BLOQUEAR ALTERNATIVAS
+
+    botoes.forEach(function(botao) {
+      botao.disabled = true;
+    });
+
+    atualizarPainelQuiz();
+
+    const respondidas = perguntaAtual + 1;
+
+    elemento("progresso").style.width =
+      `${(respondidas / perguntas.length) * 100}%`;
+
+    elemento("proxima-pergunta").disabled = false;
+
+  }
+
+  // ========================================
+  // PRÓXIMA PERGUNTA
+  // ========================================
+
+  function proximaPergunta() {
+
+    if (!respondeu) {
+      return;
+    }
+
+    if (perguntaAtual < perguntas.length - 1) {
+
+      perguntaAtual++;
+
+      mostrarPergunta();
+
+    } else {
+
+      finalizarQuiz();
+
+    }
+
+  }
+
+  // ========================================
+  // RESULTADO FINAL
+  // ========================================
+
+  function finalizarQuiz() {
+
+    elemento("numero-pergunta").textContent =
+      "QUIZ CONCLUÍDO";
+
+    elemento("pergunta").textContent =
+      "Seu resultado final:";
+
+    elemento("opcoes").replaceChildren();
+
+    elemento("resposta-quiz").textContent = "";
+
+    elemento("progresso").style.width = "100%";
+
+    elemento("proxima-pergunta").hidden = true;
+
+    let mensagem = "";
+
+    if (pontos >= 20) {
+
+      mensagem =
+        "Excelente! Você entende muito de segurança digital!";
+
+    } else if (pontos >= 15) {
+
+      mensagem =
+        "Muito bem! Você tem bons conhecimentos!";
+
+    } else if (pontos >= 10) {
+
+      mensagem =
+        "Bom trabalho! Continue aprendendo!";
+
+    } else {
+
+      mensagem =
+        "Continue estudando! Você pode melhorar!";
+
+    }
+
+    elemento("resultado-final").textContent =
+      `${pontos}/25 pontos — ${mensagem}`;
+
+    elemento("reiniciar-quiz").hidden = false;
+
+  }
+
+  // ========================================
+  // REINICIAR QUIZ
+  // ========================================
+
+  function reiniciarQuiz() {
+
+    perguntaAtual = 0;
+
+    pontos = 0;
+
+    perguntasRespondidas = 0;
+
+    acertos = 0;
+
+    atualizarPainelQuiz();
+
+    mostrarPergunta();
+
+  }
+
+  // ========================================
+  // REGISTRAR RISCO
+  // ========================================
+
+  function registrarRisco() {
+
+    const tipo =
+      elemento("tipoRisco").value;
+
+    const descricao =
+      elemento("descricao").value.trim();
+
+    const aviso =
+      elemento("aviso-risco");
+
+    if (tipo === "" || descricao === "") {
+
+      aviso.textContent =
+        "Preencha o tipo de risco e a descrição.";
+
+      aviso.className = "aviso erro";
+
+      return;
+    }
+
+    const lista = elemento("lista");
+
+    // REMOVER MENSAGEM INICIAL
+
+    const vazio = lista.querySelector(".vazio");
+
+    if (vazio) {
+      vazio.remove();
+    }
+
+    // CRIAR NOVO REGISTRO
+
+    const item = document.createElement("li");
+
+    const tipoTexto = document.createElement("strong");
+
+    tipoTexto.className = "risco-tipo";
+
+    tipoTexto.textContent = tipo;
+
+    const descricaoTexto = document.createElement("p");
+
+    descricaoTexto.className = "risco-descricao";
+
+    descricaoTexto.textContent = descricao;
+
+    // BOTÃO DE EXCLUIR
+
+    const remover = document.createElement("button");
+
+    remover.type = "button";
+
+    remover.className = "botao-remover";
+
+    remover.textContent = "Excluir registro";
+
+    remover.addEventListener("click", function() {
+
+      item.remove();
+
+      atualizarTotalRiscos();
+
+      if (lista.children.length === 0) {
+
+        const mensagem = document.createElement("li");
+
+        mensagem.className = "vazio";
+
+        mensagem.textContent =
+          "Nenhum risco registrado ainda.";
+
+        lista.appendChild(mensagem);
+
+      }
+
+    });
+
+    item.append(
+      tipoTexto,
+      descricaoTexto,
+      remover
+    );
+
+    lista.appendChild(item);
+
+    // LIMPAR CAMPOS
+
+    elemento("tipoRisco").value = "";
+
+    elemento("descricao").value = "";
+
+    aviso.textContent =
+      "Risco registrado com sucesso!";
+
+    aviso.className = "aviso sucesso";
+
+    atualizarTotalRiscos();
+
+  }
+
+  // ========================================
+  // ATUALIZAR TOTAL DE RISCOS
+  // ========================================
+
+  function atualizarTotalRiscos() {
+
+    const total =
+      elemento("lista").querySelectorAll("li:not(.vazio)").length;
+
+    elemento("total-riscos").textContent = total;
+
+  }
+
+  // ========================================
+  // INICIAR E CONECTAR OS BOTÕES
+  // ========================================
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+    elemento("btn-consultar").addEventListener(
+      "click",
+      consultarSituacao
+    );
+
+    elemento("proxima-pergunta").addEventListener(
+      "click",
+      proximaPergunta
+    );
+
+    elemento("reiniciar-quiz").addEventListener(
+      "click",
+      reiniciarQuiz
+    );
+
+    elemento("btn-registrar").addEventListener(
+      "click",
+      registrarRisco
+    );
+
+    mostrarPergunta();
+
+  });
+</script>
+
+</body>
+</html>
